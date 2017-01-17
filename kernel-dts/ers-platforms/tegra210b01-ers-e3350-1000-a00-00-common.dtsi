@@ -21,6 +21,7 @@
 /memreserve/ 0x80000000 0x00020000;
 
 #include "tegra210b01-ers-common.dtsi"
+#include "tegra210b01-ers-power-tree-e2175-1122-a00.dtsi"
 
 / {
 	model = "e3350";

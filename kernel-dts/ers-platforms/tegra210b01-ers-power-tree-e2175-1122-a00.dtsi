@@ -1,0 +1,197 @@
+/*
+ * Copyright (c) 2017, NVIDIA CORPORATION.  All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+ * more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ */
+
+#include "tegra210b01-ers-pmic-e2175-1122-a00.dtsi"
+#include "tegra210b01-ers-fixed-e2175-1122-a00.dtsi"
+
+/ {
+	i2c@7000d000 {
+		max77620@3c {
+			regulators {
+				sd0 {
+					regulator-enable-ramp-delay = <120>;
+					regulator-disable-ramp-delay = <1720>;
+					regulator-ramp-delay = <27500>;
+					regulator-ramp-delay-scale = <400>;
+				};
+
+				sd1 {
+					regulator-enable-ramp-delay = <120>;
+					regulator-disable-ramp-delay = <29200>;
+					regulator-ramp-delay = <27500>;
+					regulator-ramp-delay-scale = <400>;
+				};
+
+				sd2 {
+					regulator-enable-ramp-delay = <164>;
+					regulator-disable-ramp-delay = <7320>;
+					regulator-ramp-delay = <27500>;
+					regulator-ramp-delay-scale = <400>;
+				};
+
+				sd3 {
+					regulator-enable-ramp-delay = <204>;
+					regulator-disable-ramp-delay = <58000>;
+					regulator-ramp-delay = <27500>;
+					regulator-ramp-delay-scale = <400>;
+				};
+
+				ldo0 {
+					regulator-enable-ramp-delay = <88>;
+					regulator-disable-ramp-delay = <4480>;
+					regulator-ramp-delay = <100000>;
+					regulator-ramp-delay-scale = <800>;
+				};
+
+				ldo1 {
+					regulator-enable-ramp-delay = <96>;
+					regulator-disable-ramp-delay = <3160>;
+					regulator-ramp-delay = <100000>;
+					regulator-ramp-delay-scale = <1050>;
+				};
+
+				ldo2 {
+					regulator-enable-ramp-delay = <124>;
+					regulator-disable-ramp-delay = <5160>;
+					regulator-ramp-delay = <100000>;
+					regulator-ramp-delay-scale = <800>;
+				};
+
+				ldo3 {
+					regulator-enable-ramp-delay = <56>;
+					regulator-disable-ramp-delay = <788>;
+					regulator-ramp-delay = <100000>;
+					regulator-ramp-delay-scale = <200>;
+				};
+
+				ldo4 {
+					regulator-enable-ramp-delay = <18>;
+					regulator-disable-ramp-delay = <568>;
+					regulator-ramp-delay = <100000>;
+					regulator-ramp-delay-scale = <200>;
+				};
+
+				ldo5 {
+					regulator-enable-ramp-delay = <300>;
+					regulator-disable-ramp-delay = <7360>;
+					regulator-ramp-delay = <100000>;
+					regulator-ramp-delay-scale = <1100>;
+				};
+
+				ldo6 {
+					regulator-enable-ramp-delay = <204>;
+					regulator-disable-ramp-delay = <4720>;
+					regulator-ramp-delay = <100000>;
+					regulator-ramp-delay-scale = <800>;
+				};
+
+				ldo7 {
+					regulator-enable-ramp-delay = <112>;
+					regulator-disable-ramp-delay = <11720>;
+					regulator-ramp-delay = <100000>;
+					regulator-ramp-delay-scale = <1100>;
+				};
+
+				ldo8 {
+					regulator-enable-ramp-delay = <48>;
+					regulator-disable-ramp-delay = <6160>;
+					regulator-ramp-delay = <100000>;
+					regulator-ramp-delay-scale = <500>;
+				};
+			};
+		};
+	};
+
+	regulators {
+		regulator@1 {
+			regulator-enable-ramp-delay = <720>;
+			regulator-disable-ramp-delay = <14480>;
+		};
+
+		regulator@2 {
+			regulator-enable-ramp-delay = <1056>;
+			regulator-disable-ramp-delay = <2580>;
+		};
+
+		regulator@4 {
+			regulator-enable-ramp-delay = <360>;
+			regulator-disable-ramp-delay = <5880>;
+		};
+
+		regulator@5 {
+			regulator-enable-ramp-delay = <704>;
+			regulator-disable-ramp-delay = <220>;
+		};
+
+		regulator@6 {
+			regulator-enable-ramp-delay = <3000>;
+			regulator-disable-ramp-delay = <584000>;
+		};
+
+		regulator@7 {
+			regulator-enable-ramp-delay = <468>;
+			regulator-disable-ramp-delay = <398>;
+		};
+
+		vdd_usb_oc_5v0: regulator@13 {
+			compatible = "regulator-pinmux-fixed";
+			reg = <21>;
+			status = "okay";
+			regulator-name = "vdd-usb-oc-5v0";
+			regulator-min-microvolt = <5000000>;
+			regulator-max-microvolt = <5000000>;
+			vin-supply = <&vdd_3v3>;
+			enable-active-high;
+			pinctrl-names = "enable", "disable";
+		};
+	};
+
+	pmc-iopower {
+		iopower-sys-supply = <&max77620_sd3>;
+		iopower-uart-supply = <&max77620_sd3>;
+		iopower-audio-supply = <&max77620_sd3>;
+		iopower-cam-supply = <&max77620_sd3>;
+		iopower-pex-ctrl-supply = <&max77620_sd3>;
+		iopower-sdmmc1-supply = <&max77620_sd3>;
+		iopower-sdmmc3-supply = <&max77620_ldo2>;
+		iopower-sdmmc4-supply = <&max77620_sd3>;
+		iopower-audio-hv-supply = <&max77620_sd3>;
+		iopower-debug-supply = <&max77620_sd3>;
+		iopower-dmic-supply = <&max77620_sd3>;
+		iopower-gpio-supply = <&max77620_sd3>;
+		iopower-spi-supply = <&max77620_sd3>;
+		iopower-spi-hv-supply = <&max77620_sd3>;
+		iopower-sdmmc2-supply = <&max77620_sd3>;
+		iopower-dp-supply = <&max77620_sd3>;
+	};
+
+	pmc@7000e400 {
+		bootrom-commands {
+			commands@4-003c {
+				nvidia,command-names = "pmic-rails";
+				reg = <0x3c>;
+				nvidia,enable-8bit-register;
+				nvidia,enable-8bit-data;
+				nvidia,controller-type-i2c;
+				nvidia,controller-id = <4>;
+				nvidia,enable-controller-reset;
+				nvidia,write-commands = <0x00000016 0x00000020>;
+			};
+		};
+	};
+};
