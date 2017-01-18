@@ -20,12 +20,16 @@
 #include <tegra210-soc/tegra210-prods.dtsi>
 #include <dt-bindings/interrupt-controller/arm-gic.h>
 
+#define EXTCON_NONE             0
+#define EXTCON_USB              1
+#define EXTCON_USB_Host         2
+
 / {
 	usb_cd: usb_cd@7009f000 {
 		compatible = "nvidia,tegra210-usb-cd";
 		reg = <0x0 0x7009f000 0x0 0x1000>;
 		#extcon-cells = <1>;
-		status = "disabled";
+		status = "okay";
 	};
 
 	psy_extcon {
@@ -38,5 +42,256 @@
 				"apple-500ma", "apple-1a", "apple-2a";
 		status = "disabled";
 	};
+
+	se_elp@70420000 {
+		status = "okay";
+	};
+
+	pmc@7000e400 {
+		nvidia,invert-interrupt;
+		io-pad-defaults {
+			pex-bias {
+				nvidia,deep-power-down-enable;
+			};
+			pex-clk1 {
+				nvidia,deep-power-down-enable;
+			};
+			pex-clk2 {
+				nvidia,deep-power-down-enable;
+			};
+			sdmmc1 {
+				nvidia,enable-dynamic-pad-voltage;
+			};
+			sdmmc3 {
+				nvidia,enable-dynamic-pad-voltage;
+			};
+		};
+	};
+
+	sdhci@700b0600 {
+		uhs-mask = <0x60>;
+		built-in;
+		power-off-rail;
+		status = "okay";
+	};
+
+	sdhci@700b0200 {
+		uhs-mask = <0x8>;
+		bus-width = <4>;
+		power-off-rail;
+		status = "okay";
+	};
+
+	sdhci@700b0000 {
+		uhs-mask = <0x8>;
+		power-off-rail;
+		status = "okay";
+	};
+
+#if 0
+	extcon {
+		id_gpio_extcon: extcon@0 {
+			compatible = "extcon-gpio";
+			reg = <0x0>;
+			extcon-gpio,name = "ID";
+			gpio = <&max77620 0 0>;
+			extcon-gpio,connection-state-low;
+			extcon-gpio,supported-cable = <EXTCON_USB_Host EXTCON_NONE>;
+			#extcon-cells = <1>;
+		};
+	};
+
+	chosen {
+		bootargs = "earlycon=uart8250,mmio32,0x70006000";
+		stdout-path = &uarta;
+	};
+
+	serial@70006000 {
+		compatible = "nvidia,tegra210-uart", "nvidia,tegra114-hsuart";
+		console-port;
+		sqa-automation-port;
+		enable-rx-poll-timer;
+		status = "okay";
+	};
+
+	serial@70006200 {
+		compatible = "nvidia,tegra114-hsuart";
+		dma-names = "tx";
+		nvidia,adjust-baud-rates = <921600 921600 100>;
+		status = "okay";
+	};
+
+	serial@70006300 {
+		compatible = "nvidia,tegra114-hsuart";
+		status = "okay";
+	};
+
+	watchdog@60005100 {
+		dt-override-status-odm-data = <0x00010000 0x00010000>;
+		nvidia,enable-on-init;
+		nvidia,heartbeat-init = <120>;
+		status = "disabled";
+	};
+
+	sdhci@700b0400 {
+		uhs-mask = <0x1c>;
+		vddio_sdmmc-supply = <&max77620_sd3>;
+		vddio_sd_slot-supply = <&en_vdd_sd3>;
+		power-off-rail;
+		status = "disabled";
+	};
+
+	pcie-controller@1003000 {
+		nvidia,wake-gpio = <&gpio TEGRA_GPIO(A, 2) 0>;
+		dvdd-pex-pll-supply = <&max77620_ldo1>;
+		l0-dvddio-pex-supply = <&max77620_ldo1>;
+		l1-dvddio-pex-supply = <&max77620_ldo1>;
+		l2-dvddio-pex-supply = <&max77620_ldo1>;
+		l3-dvddio-pex-supply = <&max77620_ldo1>;
+		l4-dvddio-pex-supply = <&max77620_ldo1>;
+		l5-dvddio-pex-supply = <&max77620_ldo1>;
+		l6-dvddio-pex-supply = <&max77620_ldo1>;
+		hvdd-pex-pll-e-supply = <&max77620_sd3>;
+		l0-hvddio-pex-supply = <&max77620_sd3>;
+		l1-hvddio-pex-supply = <&max77620_sd3>;
+		l2-hvddio-pex-supply = <&max77620_sd3>;
+		l3-hvddio-pex-supply = <&max77620_sd3>;
+		l4-hvddio-pex-supply = <&max77620_sd3>;
+		l5-hvddio-pex-supply = <&max77620_sd3>;
+		l6-hvddio-pex-supply = <&max77620_sd3>;
+		vddio-pex-ctl-supply = <&max77620_sd3>;
+		pci@1,0 {
+			nvidia,num-lanes = <4>;
+			nvidia,presence-detection-gpio = <&pca9539_76 1 0>;
+		};
+
+		pci@2,0 {
+			nvidia,num-lanes = <1>;
+			nvidia,presence-detection-gpio = <&pca9539_76 2 0>;
+		};
+	};
+
+	spi@7000d400 {
+		status = "okay";
+		earSmart: earSmart-codec@0 {
+			compatible = "adnc,earSmart-codec";
+			reg = <0>;
+			spi-max-frequency = <6000000>;
+			spi-cpha;
+
+			adnc,reset-gpio = <&gpio TEGRA_GPIO(BB, 3) GPIO_ACTIVE_HIGH>;
+			adnc,gpiob-gpio = <&gpio TEGRA_GPIO(E, 6) GPIO_ACTIVE_HIGH>;
+			adnc,wakeup-gpio = <&gpio TEGRA_GPIO(K, 2) GPIO_ACTIVE_HIGH>;
+
+			adnc,int-gpio = <(-1)>;
+			adnc,gpioa-gpio = <(-1)>;
+			adnc,enable_hs_uart_intf = <0>;
+			adnc,ext_clk_rate = <0>;
+			adnc,debounce_timer = <3>;
+			adnc,plug_det_enabled = <1>;
+			adnc,mic_det_enabled = <1>;
+
+			adnc,gpio_b_irq_type = <4>;
+			adnc,cmd_comp_mode = <0>;
+
+			/* Button Control 1 */
+			adnc,btn_press_settling_time = <4>;
+			adnc,btn_press_polling_rate = <1>;
+			adnc,btn_press_det_act = <1>;
+
+			/* Button Control 2 */
+			adnc,double_btn_timer = <(-1)>;
+			adnc,mic_det_settling_timer = <(-1)>;
+
+			/* Button Control 3 */
+			adnc,long_btn_timer = <(-1)>;
+			adnc,adc_btn_mute = <(-1)>;
+
+			/* Button Control 4 */
+			adnc,valid_levels = <31>;
+			adnc,impd_det_timer = <0>;
+		};
+	};
+
+	spi@7000da00 {
+		status = "disabled";
+		spi-max-frequency = <25000000>;
+	};
+
+	i2c@7000c000 {
+		ad1937x: ad193x.0-0004@04 {
+			compatible = "ad,ad1937";
+			reg = <0x04>;
+			status = "disabled";
+		};
+		ad1937y: ad193x.0-0005@05 {
+			compatible = "ad,ad1937";
+			reg = <0x05>;
+			status = "disabled";
+		};
+		pca9546@71 {
+			i2c@3 {
+				gpio@76 {
+					pcie-mux-output-low {
+						gpio-hog;
+						output-low;
+						gpios = <12 0 14 0 15 0>;
+						line-name = "pcie-mux-output-low";
+						status = "disabled";
+					};
+
+					pcie-mux-output-high {
+						gpio-hog;
+						output-high;
+						gpios = <5 0 6 0 11 0 13 0>;
+						line-name = "pcie-mux-output-high";
+						status = "disabled";
+					};
+				};
+			};
+		};
+	};
+
+	i2c@7000d000 {
+		clock-frequency = <1000000>;
+		status = "disabled";
+	};
+
+	xusb_pad_ctl: xusb_padctl {
+		nvidia,lane-map = <0x14>;
+		nvidia,enable-sata-port;
+		nvidia,ss_ports = < TEGRA_XHCI_SS_P0 TEGRA_XHCI_USB2_P0 TEGRA_XHCI_LANE_6 TEGRA_XHCI_PORT_OTG
+				    TEGRA_XHCI_SS_P1 TEGRA_XHCI_USB2_P3 TEGRA_XHCI_LANE_5 TEGRA_XHCI_PORT_STD
+				    TEGRA_XHCI_SS_P2 TEGRA_XHCI_USB2_P1 TEGRA_XHCI_UNUSED_LANE TEGRA_XHCI_PORT_STD
+				    TEGRA_XHCI_SS_P3 TEGRA_XHCI_USB2_P2 TEGRA_XHCI_UNUSED_LANE TEGRA_XHCI_PORT_STD>;
+		status = "okay";
+	};
+
+	xusb@70090000 {
+		/* nvidia,uses_external_pmic;
+		nvidia,gpio_controls_muxed_ss_lanes; */
+		nvidia,gpio_ss1_sata = <0>;
+		nvidia,ulpicap = <0>; /* No ulpi support. can we remove */
+		nvidia,portmap = <0x0e0e>;
+		nvidia,common_padctl = <&xusb_pad_ctl>;
+		status = "okay";
+	};
+
+	xudc@700d0000 {
+		extcon-cables = <&bq2419x 0>;
+		extcon-cable-names = "vbus";
+		#extcon-cells = <1>;
+		nvidia,common_padctl = <&xusb_pad_ctl>;
+		status = "okay";
+	};
+
+	xotg {
+		extcon-cables = <&id_gpio_extcon 0>;
+		extcon-cable-names = "id";
+		#extcon-cells = <1>;
+		nvidia,common_padctl = <&xusb_pad_ctl>;
+		status = "okay";
+	};
+#endif
 
 };
