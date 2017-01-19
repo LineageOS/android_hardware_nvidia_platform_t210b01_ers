@@ -151,7 +151,7 @@
 
 		vdd_cdc_1v2_aud: regulator@12 {
 			compatible = "regulator-fixed-sync";
-			reg = <101>;
+			reg = <12>;
 			status = "disabled";
 			regulator-name = "vdd-cdc-1v2-aud";
 			regulator-min-microvolt = <1200000>;
@@ -159,5 +159,16 @@
 			enable-active-high;
 			startup-delay-us = <250000>;
 		};
+
+		en_vdd_sd3: regulator@13 {
+			compatible = "regulator-fixed-sync";
+			reg = <13>;
+			regulator-name = "en-vdd-sd3";
+			regulator-min-microvolt = <3300000>;
+			regulator-max-microvolt = <3300000>;
+			gpio = <&gpio TEGRA_GPIO(L, 0) 0>;
+			enable-active-high;
+                };
+
 	};
 };
