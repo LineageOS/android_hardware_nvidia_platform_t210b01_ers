@@ -100,6 +100,7 @@
 			#extcon-cells = <1>;
 		};
 	};
+#endif
 
 	chosen {
 		bootargs = "earlycon=uart8250,mmio32,0x70006000";
@@ -107,7 +108,7 @@
 	};
 
 	serial@70006000 {
-		compatible = "nvidia,tegra210-uart", "nvidia,tegra114-hsuart";
+		compatible = "nvidia,tegra20-uart", "nvidia,tegra114-hsuart";
 		console-port;
 		sqa-automation-port;
 		enable-rx-poll-timer;
@@ -126,6 +127,7 @@
 		status = "okay";
 	};
 
+#if 0
 	watchdog@60005100 {
 		dt-override-status-odm-data = <0x00010000 0x00010000>;
 		nvidia,enable-on-init;
