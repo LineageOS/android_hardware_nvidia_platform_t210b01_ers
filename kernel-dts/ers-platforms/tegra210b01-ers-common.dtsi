@@ -140,6 +140,13 @@
 		status = "okay";
 	};
 
+	watchdog@60005100 {
+		nvidia,enable-on-init;
+		nvidia,heartbeat-init = <120>;
+		status = "okay";
+	};
+
+#if 0
 	pcie-controller@1003000 {
 		nvidia,wake-gpio = <&gpio TEGRA_GPIO(A, 2) 0>;
 		dvdd-pex-pll-supply = <&max77620_ldo1>;
