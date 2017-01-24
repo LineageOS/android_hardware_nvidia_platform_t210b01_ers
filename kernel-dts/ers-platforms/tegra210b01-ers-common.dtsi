@@ -20,6 +20,7 @@
 #include <tegra210-soc/tegra210-prods.dtsi>
 #include <dt-bindings/interrupt-controller/arm-gic.h>
 #include <dt-bindings/soc/tegra-pmc.h>
+#include <tegra210-soc/tegra210-sdhci.dtsi>
 
 #define EXTCON_NONE             0
 #define EXTCON_USB              1
@@ -69,22 +70,31 @@
 		};
 	};
 
-	sdhci@700b0600 {
+	sdhci@700b0600 { /* used for eMMC device*/
 		uhs-mask = <0x60>;
-		built-in;
 		power-off-rail;
 		status = "okay";
 	};
 
-	sdhci@700b0200 {
+	sdhci@700b0400 { /* used for SD device*/
+		uhs-mask = <0x1c>;
+		power-off-rail;
+		status = "disabled";
+	};
+
+	sdhci@700b0200 { /* used for SDIO device*/
 		uhs-mask = <0x8>;
 		bus-width = <4>;
 		power-off-rail;
-		status = "okay";
+		status = "disabled";
 	};
 
-	sdhci@700b0000 {
-		uhs-mask = <0x8>;
+	sdhci@700b0000 { /* used for SD device*/
+		nvidia,sd-device;
+		uhs-mask = <0x1C>;
+		cd-gpios = <&gpio TEGRA_GPIO(Z, 1) 0>;
+		wp-gpios = <&gpio TEGRA_GPIO(Z, 4) 0>;
+		default-drv-type = <1>;
 		power-off-rail;
 		status = "okay";
 	};
@@ -135,14 +145,6 @@
 		dt-override-status-odm-data = <0x00010000 0x00010000>;
 		nvidia,enable-on-init;
 		nvidia,heartbeat-init = <120>;
-		status = "disabled";
-	};
-
-	sdhci@700b0400 {
-		uhs-mask = <0x1c>;
-		vddio_sdmmc-supply = <&max77620_sd3>;
-		vddio_sd_slot-supply = <&en_vdd_sd3>;
-		power-off-rail;
 		status = "disabled";
 	};
 
