@@ -19,6 +19,7 @@
 #include <tegra210-soc/tegra210-soc-shield.dtsi>
 #include <tegra210-soc/tegra210-prods.dtsi>
 #include <dt-bindings/interrupt-controller/arm-gic.h>
+#include <dt-bindings/soc/tegra-pmc.h>
 
 #define EXTCON_NONE             0
 #define EXTCON_USB              1
@@ -261,41 +262,119 @@
 		status = "disabled";
 	};
 
-	xusb_pad_ctl: xusb_padctl {
-		nvidia,lane-map = <0x14>;
-		nvidia,enable-sata-port;
-		nvidia,ss_ports = < TEGRA_XHCI_SS_P0 TEGRA_XHCI_USB2_P0 TEGRA_XHCI_LANE_6 TEGRA_XHCI_PORT_OTG
-				    TEGRA_XHCI_SS_P1 TEGRA_XHCI_USB2_P3 TEGRA_XHCI_LANE_5 TEGRA_XHCI_PORT_STD
-				    TEGRA_XHCI_SS_P2 TEGRA_XHCI_USB2_P1 TEGRA_XHCI_UNUSED_LANE TEGRA_XHCI_PORT_STD
-				    TEGRA_XHCI_SS_P3 TEGRA_XHCI_USB2_P2 TEGRA_XHCI_UNUSED_LANE TEGRA_XHCI_PORT_STD>;
+#endif
+	/* Put common control config here */
+	pinctrl@7009f000 {
 		status = "okay";
+		pinctrl-0 = <&tegra_padctl_uphy_pinmux_default>;
+		pinctrl-names = "default";
+		tegra_padctl_uphy_pinmux_default: pinmux {
+			usb2-micro-AB {
+				nvidia,lanes = "otg-0";
+				nvidia,function = "xusb";
+				nvidia,port-cap =
+					<TEGRA_PADCTL_PORT_OTG_CAP>;
+			};
+			usb3-micro-AB {
+				nvidia,lanes = "uphy-lane-5";
+				nvidia,function = "usb3";
+				nvidia,usb3-port = <0x0>;
+				nvidia,usb2-map = <0x0>;
+				nvidia,port-cap =
+					<TEGRA_PADCTL_PORT_OTG_CAP>;
+			};
+			usb2-std-A-J8110 {
+				nvidia,lanes = "otg-1";
+				nvidia,function = "xusb";
+				nvidia,port-cap =
+					<TEGRA_PADCTL_PORT_HOST_ONLY>;
+			};
+			usb3-std-A-J8110 {
+				nvidia,lanes = "uphy-lane-4";
+				nvidia,function = "usb3";
+				nvidia,usb3-port = <1>;
+				nvidia,usb2-map = <3>;
+				nvidia,port-cap =
+					<TEGRA_PADCTL_PORT_HOST_ONLY>;
+			};
+
+			usb2-std-A-J8120 {
+				nvidia,lanes = "otg-2";
+				nvidia,function = "xusb";
+				nvidia,port-cap =
+					<TEGRA_PADCTL_PORT_HOST_ONLY>;
+			};
+			usb3-std-A-J8120 {
+				nvidia,lanes = "uphy-lane-1";
+				nvidia,function = "usb3";
+				nvidia,usb3-port = <3>;
+				nvidia,usb2-map = <2>;
+				nvidia,port-cap =
+					<TEGRA_PADCTL_PORT_HOST_ONLY>;
+			};
+			usb2-std-A-J8130 {
+				nvidia,lanes = "otg-3";
+				nvidia,function = "xusb";
+				nvidia,port-cap =
+					<TEGRA_PADCTL_PORT_HOST_ONLY>;
+			};
+			usb3-std-A-J8130 {
+				nvidia,lanes = "uphy-lane-0";
+				nvidia,function = "usb3";
+				nvidia,usb3-port = <2>;
+				nvidia,usb2-map = <1>;
+				nvidia,port-cap =
+					<TEGRA_PADCTL_PORT_HOST_ONLY>;
+				status = "disabled";
+			};
+			hsic {
+				nvidia,lanes = "hsic-0";
+				nvidia,function = "hsic";
+				status = "disabled";
+			};
+			sata {
+				nvidia,lanes = "uphy-lane-7";
+				nvidia,function = "sata";
+				status = "disabled";
+			};
+		};
 	};
 
 	xusb@70090000 {
-		/* nvidia,uses_external_pmic;
-		nvidia,gpio_controls_muxed_ss_lanes; */
-		nvidia,gpio_ss1_sata = <0>;
-		nvidia,ulpicap = <0>; /* No ulpi support. can we remove */
-		nvidia,portmap = <0x0e0e>;
-		nvidia,common_padctl = <&xusb_pad_ctl>;
 		status = "okay";
+		extcon-cables = <&id_gpio_extcon 1>;
+		extcon-cable-names = "id";
+		#extcon-cells = <1>;
+		phys = <&tegra_padctl_uphy TEGRA_PADCTL_UPHY_UTMI_P(0)>,
+			<&tegra_padctl_uphy TEGRA_PADCTL_UPHY_UTMI_P(1)>,
+			<&tegra_padctl_uphy TEGRA_PADCTL_UPHY_UTMI_P(2)>,
+			<&tegra_padctl_uphy TEGRA_PADCTL_UPHY_UTMI_P(3)>,
+			<&tegra_padctl_uphy TEGRA_PADCTL_UPHY_USB3_P(0)>,
+			<&tegra_padctl_uphy TEGRA_PADCTL_UPHY_USB3_P(1)>,
+			<&tegra_padctl_uphy TEGRA_PADCTL_UPHY_USB3_P(2)>;
+		phy-names = "utmi-0", "utmi-1", "utmi-2", "utmi-3",
+			"usb3-0", "usb3-1", "usb3-2";
+		nvidia,pmc-wakeup =
+			<&tegra_pmc
+				PMC_WAKE_TYPE_EVENT 41 PMC_TRIGGER_TYPE_HIGH>,
+			<&tegra_pmc
+				PMC_WAKE_TYPE_EVENT 44 PMC_TRIGGER_TYPE_HIGH>;
 	};
 
 	xudc@700d0000 {
-		extcon-cables = <&bq2419x 0>;
+		extcon-cables = <&id_gpio_extcon 0>;
 		extcon-cable-names = "vbus";
 		#extcon-cells = <1>;
-		nvidia,common_padctl = <&xusb_pad_ctl>;
 		status = "okay";
+		phys =  <&tegra_padctl_uphy TEGRA_PADCTL_UPHY_UTMI_P(0)>,
+			<&tegra_padctl_uphy TEGRA_PADCTL_UPHY_USB3_P(0)>;
+		phy-names = "usb2", "usb3";
 	};
 
 	xotg {
-		extcon-cables = <&id_gpio_extcon 0>;
+		extcon-cables = <&id_gpio_extcon 1>;
 		extcon-cable-names = "id";
 		#extcon-cells = <1>;
-		nvidia,common_padctl = <&xusb_pad_ctl>;
-		status = "okay";
+		status = "disabled";
 	};
-#endif
-
 };
