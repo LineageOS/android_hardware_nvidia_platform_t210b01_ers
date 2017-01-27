@@ -348,6 +348,7 @@
 	};
 
 	xudc@700d0000 {
+		compatible = "nvidia,tegra210b01-xudc";
 		extcon-cables = <&id_gpio_extcon 0>;
 		extcon-cable-names = "vbus";
 		#extcon-cells = <1>;
