@@ -140,14 +140,6 @@
 		status = "okay";
 	};
 
-#if 0
-	watchdog@60005100 {
-		dt-override-status-odm-data = <0x00010000 0x00010000>;
-		nvidia,enable-on-init;
-		nvidia,heartbeat-init = <120>;
-		status = "disabled";
-	};
-
 	pcie-controller@1003000 {
 		nvidia,wake-gpio = <&gpio TEGRA_GPIO(A, 2) 0>;
 		dvdd-pex-pll-supply = <&max77620_ldo1>;
@@ -167,15 +159,24 @@
 		l5-hvddio-pex-supply = <&max77620_sd3>;
 		l6-hvddio-pex-supply = <&max77620_sd3>;
 		vddio-pex-ctl-supply = <&max77620_sd3>;
+		status = "okay";
 		pci@1,0 {
 			nvidia,num-lanes = <4>;
-			nvidia,presence-detection-gpio = <&pca9539_76 1 0>;
+			status = "okay";
 		};
 
 		pci@2,0 {
 			nvidia,num-lanes = <1>;
-			nvidia,presence-detection-gpio = <&pca9539_76 2 0>;
+			status = "okay";
 		};
+	};
+
+#if 0
+	watchdog@60005100 {
+		dt-override-status-odm-data = <0x00010000 0x00010000>;
+		nvidia,enable-on-init;
+		nvidia,heartbeat-init = <120>;
+		status = "disabled";
 	};
 
 	spi@7000d400 {
@@ -338,6 +339,20 @@
 				nvidia,lanes = "uphy-lane-7";
 				nvidia,function = "sata";
 				status = "disabled";
+			};
+			pcie-0 {
+				nvidia,lanes = "uphy-lane-3";
+				nvidia,function = "pcie";
+				nvidia,pcie-controller = <0>;
+				nvidia,pcie-lane-select =
+					<TEGRA_PADCTL_PCIE_LANE_X1>;
+			};
+			pcie-1 {
+				nvidia,lanes = "uphy-lane-0";
+				nvidia,function = "pcie";
+				nvidia,pcie-controller = <1>;
+				nvidia,pcie-lane-select =
+					<TEGRA_PADCTL_PCIE_LANE_X1>;
 			};
 		};
 	};
