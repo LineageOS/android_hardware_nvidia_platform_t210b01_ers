@@ -22,6 +22,7 @@
 #include <dt-bindings/soc/tegra-pmc.h>
 #include <tegra210-soc/tegra210-sdhci.dtsi>
 #include <t210-common-platforms/tegra210-pinmux-drive-sdmmc-common.dtsi>
+#include <dt-bindings/reset/tegra210-car.h>
 
 #define EXTCON_NONE             0
 #define EXTCON_USB              1
@@ -370,5 +371,42 @@
 		#pwm-cells = <2>;
 		pwm-regulator = <&cpu_ovr_reg>;
 		status = "okay";
+	};
+
+	dfll: clock@70110000 {
+		compatible = "nvidia,tegra210-dfll";
+		interrupts = <GIC_SPI 62 IRQ_TYPE_LEVEL_HIGH>;
+		clocks = <&tegra_car TEGRA210_CLK_DFLL_SOC>,
+			<&tegra_car TEGRA210_CLK_DFLL_REF>,
+			<&tegra_car TEGRA210_CLK_I2C5>;
+		clock-names = "soc", "ref", "i2c";
+		resets = <&tegra_car TEGRA210_RST_DFLL_DVCO>;
+		reset-names = "dvco";
+		#clock-cells = <0>;
+		clock-output-names = "dfllCPU_out";
+		status = "okay";
+		reg = <0x0 0x70110000 0x0 0x400>;
+		vdd-cpu-supply = <&cpu_ovr_reg>;
+		nvidia,pwm-to-pmic;
+		nvidia,init-uv = <1000000>;
+		nvidia,align-step-uv = <19200>; /* 19.2mv */
+		nvidia,sample-rate = <25000>;
+		nvidia,droop-ctrl = <0x00000f00>;
+		nvidia,force-mode = <1>;
+		nvidia,cf = <6>;
+		nvidia,ci = <0>;
+		nvidia,cg = <2>;
+	};
+
+	cpus {
+		cpu@0 {
+			clocks = <&tegra_car TEGRA210_CLK_CCLK_G>,
+				<&tegra_car TEGRA210_CLK_CCLK_LP>,
+				<&tegra_car TEGRA210_CLK_PLL_X>,
+				<&tegra_car TEGRA210_CLK_PLL_P_OUT4>,
+				<&dfll>;
+			clock-names = "cpu_g", "cpu_lp", "pll_x", "pll_p", "dfll";
+			clock-latency = <300000>;
+		};
 	};
 };
