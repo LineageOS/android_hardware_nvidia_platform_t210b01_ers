@@ -213,6 +213,11 @@
 		};
 	};
 
+
+	mailbox@70098000 {
+		status = "okay";
+	};
+
 	/* Put common control config here */
 	pinctrl@7009f000 {
 		compatible = "nvidia,tegra21xb01-padctl-uphy";
