@@ -51,6 +51,8 @@
 
 	pmc@7000e400 {
 		nvidia,invert-interrupt;
+		#nvidia,wake-cells = <3>;
+		nvidia,core-power-req-active-high;
 		io-pad-defaults {
 			pex-bias {
 				nvidia,deep-power-down-enable;
