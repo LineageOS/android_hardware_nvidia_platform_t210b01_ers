@@ -162,7 +162,6 @@
 		status = "okay";
 	};
 
-#if 0
 	pcie-controller@1003000 {
 		nvidia,wake-gpio = <&gpio TEGRA_GPIO(A, 2) 0>;
 		dvdd-pex-pll-supply = <&max77620_ldo1>;
@@ -194,46 +193,6 @@
 		};
 	};
 
-	i2c@7000c000 {
-		ad1937x: ad193x.0-0004@04 {
-			compatible = "ad,ad1937";
-			reg = <0x04>;
-			status = "disabled";
-		};
-		ad1937y: ad193x.0-0005@05 {
-			compatible = "ad,ad1937";
-			reg = <0x05>;
-			status = "disabled";
-		};
-		pca9546@71 {
-			i2c@3 {
-				gpio@76 {
-					pcie-mux-output-low {
-						gpio-hog;
-						output-low;
-						gpios = <12 0 14 0 15 0>;
-						line-name = "pcie-mux-output-low";
-						status = "disabled";
-					};
-
-					pcie-mux-output-high {
-						gpio-hog;
-						output-high;
-						gpios = <5 0 6 0 11 0 13 0>;
-						line-name = "pcie-mux-output-high";
-						status = "disabled";
-					};
-				};
-			};
-		};
-	};
-
-	i2c@7000d000 {
-		clock-frequency = <1000000>;
-		status = "disabled";
-	};
-
-#endif
 	/* Put common control config here */
 	pinctrl@7009f000 {
 		compatible = "nvidia,tegra21xb01-padctl-uphy";
