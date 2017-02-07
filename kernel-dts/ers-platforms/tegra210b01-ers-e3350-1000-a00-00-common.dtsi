@@ -49,6 +49,12 @@
 			#size-cells = <2>;
 			reg = <0x22>;
 			status = "okay";
+			pcie-mux-output-high {
+				gpio-hog;
+				output-high;
+				gpios = <9 0 10 0>;
+				line-name = "pcie-mux-output-high";
+			};
 		};
 		pca9535_3: pca9535@23 {
 			compatible = "nxp,pca9535";
@@ -70,6 +76,12 @@
 			#size-cells = <2>;
 			reg = <0x25>;
 			status = "okay";
+			pcie-mux-output-low {
+				gpio-hog;
+				output-low;
+				gpios = <5 0 6 0 7 0>;
+				line-name = "pcie-mux-output-low";
+			};
 		};
 	};
 };
