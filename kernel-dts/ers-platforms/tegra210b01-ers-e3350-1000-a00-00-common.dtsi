@@ -27,4 +27,49 @@
 	model = "e3350";
 	compatible = "nvidia,e3350", "nvidia,tegra210b01";
 	nvidia,dtsfilename = __FILE__;
+
+	i2c@7000c000 {
+		pca9535_0: pca9535@20 {
+			compatible = "nxp,pca9535";
+			gpio-controller;
+			#size-cells = <2>;
+			reg = <0x20>;
+			status = "okay";
+		};
+		pca9535_1: pca9535@21 {
+			compatible = "nxp,pca9535";
+			gpio-controller;
+			#size-cells = <2>;
+			reg = <0x21>;
+			status = "okay";
+		};
+		pca9535_2: pca9535@22 {
+			compatible = "nxp,pca9535";
+			gpio-controller;
+			#size-cells = <2>;
+			reg = <0x22>;
+			status = "okay";
+		};
+		pca9535_3: pca9535@23 {
+			compatible = "nxp,pca9535";
+			gpio-controller;
+			#size-cells = <2>;
+			reg = <0x23>;
+			status = "okay";
+		};
+		pca9535_4: pca9535@24 {
+			compatible = "nxp,pca9535";
+			gpio-controller;
+			#size-cells = <2>;
+			reg = <0x24>;
+			status = "okay";
+		};
+		pca9535_5: pca9535@25 {
+			compatible = "nxp,pca9535";
+			gpio-controller;
+			#size-cells = <2>;
+			reg = <0x25>;
+			status = "okay";
+		};
+	};
 };
