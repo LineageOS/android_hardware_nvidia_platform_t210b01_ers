@@ -79,24 +79,24 @@
 			vin-supply = <&vdd_3v3>;
 		};
 
-		en_vdd_cam: regulator@5 {
+		vdd_sys_boost: regulator@5 {
 			compatible = "regulator-fixed-sync";
 			reg = <5>;
-			regulator-name = "en-vdd-cam";
-			regulator-min-microvolt = <1800000>;
-			regulator-max-microvolt = <1800000>;
-			gpio = <&gpio TEGRA_GPIO(S, 4) 0>;
-			enable-active-high;
-		};
-
-		vdd_sys_boost: regulator@6 {
-			compatible = "regulator-fixed-sync";
-			reg = <6>;
 			regulator-name = "vdd-sys-boost";
 			regulator-min-microvolt = <5000000>;
 			regulator-max-microvolt = <5000000>;
 			regulator-always-on;
 			gpio = <&max77620 1 0>;
+			enable-active-high;
+		};
+
+		en_vdd_cam: regulator@6 {
+			compatible = "regulator-fixed-sync";
+			reg = <6>;
+			regulator-name = "en-vdd-cam";
+			regulator-min-microvolt = <1800000>;
+			regulator-max-microvolt = <1800000>;
+			gpio = <&gpio TEGRA_GPIO(S, 4) 0>;
 			enable-active-high;
 		};
 
@@ -168,7 +168,6 @@
 			regulator-max-microvolt = <3300000>;
 			gpio = <&gpio TEGRA_GPIO(L, 0) 0>;
 			enable-active-high;
-                };
-
+		};
 	};
 };
