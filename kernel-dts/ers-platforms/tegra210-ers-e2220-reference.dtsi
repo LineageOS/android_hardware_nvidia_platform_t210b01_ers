@@ -1,0 +1,166 @@
+/*
+ * T210- DSC
+ *
+ * arch/arm64/boot/dts/tegra210-ers-e2220-1170-a00-00.dts
+ *
+ * Copyright (c) 2015-2016, NVIDIA CORPORATION.  All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; version 2 of the License.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+ * more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ *
+ */
+
+#include <t210b01-soc/tegra210b01-soc-common-platform.dtsi>
+#include <dt-bindings/interrupt-controller/arm-gic.h>
+#include <dt-bindings/soc/tegra-pmc.h>
+#include <tegra210-soc/tegra210-trusty.dtsi>
+#include "ers-platforms/tegra210-ers-extgpio-e2220-1170-a00.dtsi"
+#include <panels/panel-j-1440-810-5-8.dtsi>
+#include <panels/panel-a-wuxga-8-0.dtsi>
+#include <panels/panel-s-wqxga-10-1.dtsi>
+#include <panels/panel-a-edp-1080p-14-0.dtsi>
+#include <t210-common-platforms/tegra210-ers-hdmi-e2190-1100-a00.dtsi>
+#include "ers-platforms/tegra210-ers-dp-e2220-1170-a00.dtsi"
+#include <t210-common-platforms/tegra210-ers-keys-e2220-1170-a00.dtsi>
+#include <tegra210-soc/tegra210-edp.dtsi>
+#include <t210-common-platforms/tegra210-ers-clk-init.dtsi>
+#include <dt-bindings/platform/t210/t210.h>
+#include <dt-bindings/reset/tegra210-car.h>
+#include <t210-common-platforms/tegra210-cpufreq.dtsi>
+
+/ {
+	host1x {
+		/* tegradc.0 */
+		dc@54200000 {
+			status = "okay";
+			nvidia,dc-flags = <TEGRA_DC_FLAG_ENABLED>;
+			nvidia,emc-clk-rate = <204000000>;
+			nvidia,cmu-enable = <1>;
+			nvidia,low-v-win = <0x2>;
+			nvidia,fb-bpp = <32>; /* bits per pixel */
+			nvidia,fb-flags = <TEGRA_FB_FLIP_ON_PROBE>;
+			nvidia,dc-or-node = "/host1x/dsi";
+		};
+		/* tegradc.1 */
+		dc@54240000 {
+			status = "okay";
+			nvidia,dc-flags = <TEGRA_DC_FLAG_ENABLED>;
+			nvidia,emc-clk-rate = <300000000>;
+			nvidia,fb-bpp = <32>; /* bits per pixel */
+			nvidia,fb-flags = <TEGRA_FB_FLIP_ON_PROBE>;
+			nvidia,dc-or-node = "/host1x/sor1";
+		};
+		dsi {
+			nvidia,dsi-controller-vs = <DSI_VS_1>;
+			status = "okay";
+			panel-j-1440-810-5-8 {
+				nvidia,dsi-dpd-pads = <DSIC_DPD_EN DSID_DPD_EN>;
+				nvidia,panel-rst-gpio = <&gpio TEGRA_GPIO(V, 2) 0>; /* PV2 */
+				nvidia,panel-bl-pwm-gpio = <&gpio TEGRA_GPIO(V, 0) 0>; /* PV0 */
+				nvidia,panel-en-gpio = <&gpio TEGRA_GPIO(V, 1) 0>; /* PV1 */
+			};
+			panel-a-wuxga-8-0 {
+				nvidia,dsi-dpd-pads = <DSIC_DPD_EN DSID_DPD_EN>;
+				nvidia,panel-rst-gpio = <&gpio TEGRA_GPIO(V, 2) 0>; /* PV2 */
+				nvidia,panel-bl-pwm-gpio = <&gpio TEGRA_GPIO(V, 0) 0>; /* PV0 */
+				nvidia,panel-en-gpio = <&gpio TEGRA_GPIO(V, 1) 0>; /* PV1 */
+			};
+			panel-s-wqxga-10-1 {
+				nvidia,panel-rst-gpio = <&gpio TEGRA_GPIO(V, 2) 0>; /* PV2 */
+				nvidia,panel-bl-pwm-gpio = <&gpio TEGRA_GPIO(V, 0) 0>; /* PV0 */
+				nvidia,panel-en-gpio = <&gpio TEGRA_GPIO(V, 1) 0>; /* PV1 */
+			};
+		};
+		sor {
+			status = "okay";
+			nvidia,hpd-gpio = <&gpio 230 0>; /*PCC6*/
+			panel-a-edp-1080p-14-0 {
+				nvidia,panel-bl-pwm-gpio = <&gpio TEGRA_GPIO(V, 0) 0>; /* PV0 */
+			};
+		};
+		dpaux {
+			status = "okay";
+		};
+		sor1 {
+			status = "okay";
+		};
+		dpaux1 {
+			status = "okay";
+		};
+
+		vi {
+			status = "okay";
+
+			avdd_dsi_csi-supply = <&max77620_gpio7>;
+		};
+
+		i2c@546c0000 {
+			tca9548@6_0077 {
+				compatible = "nxp,pca9548";
+				reg = <0x77>;
+				#address-cells = <1>;
+				#size-cells = <0>;
+				vcc-supply = <&en_vdd_cam>;
+				skip_mux_detect;
+				force_bus_start = <T210_CAMERA_I2C_MUX_BUS(0)>;
+				i2c@0 {
+					reg = <0>;
+					i2c-mux,deselect-on-exit;
+				};
+				i2c@1 {
+					reg = <1>;
+					i2c-mux,deselect-on-exit;
+				};
+				i2c@2 {
+					reg = <2>;
+					i2c-mux,deselect-on-exit;
+				};
+				i2c@3 {
+					reg = <3>;
+					i2c-mux,deselect-on-exit;
+				};
+				i2c@4 {
+					reg = <4>;
+					i2c-mux,deselect-on-exit;
+				};
+				i2c@5 {
+					reg = <5>;
+					i2c-mux,deselect-on-exit;
+				};
+			};
+		};
+	};
+
+	memory@80000000 {
+		device_type = "memory";
+		reg = < 0x0 0x80000000 0x0 0x80000000>;
+	};
+
+	backlight {
+		compatible = "pwm-backlight";
+		status = "okay";
+		power-supply = <&max77620_sd3>;
+		panel-j-1440-810-5-8-bl {
+			pwms = <&tegra_pwm 0 29334>;
+		};
+		panel-a-wuxga-8-0-bl {
+			pwms = <&tegra_pwm 0 40161>;
+		};
+		panel-s-wqxga-10-1-bl {
+			pwms = <&tegra_pwm 0 1000000>;
+		};
+		panel-a-edp-1080p-14-0-bl {
+			pwms = <&tegra_pwm 0 1000000>;
+		};
+	};
+};

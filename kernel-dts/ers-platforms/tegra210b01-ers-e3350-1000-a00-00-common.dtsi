@@ -20,13 +20,34 @@
 
 /memreserve/ 0x80000000 0x00020000;
 
+#include "tegra210-ers-e2220-reference.dtsi"
 #include "tegra210b01-ers-common.dtsi"
-#include "tegra210b01-ers-power-tree-e2175-1122-a00.dtsi"
 
 / {
 	model = "e3350";
 	compatible = "nvidia,e3350", "nvidia,tegra210b01";
 	nvidia,dtsfilename = __FILE__;
+	nvidia,fastboot-usb-pid = <0x7100>;
+
+	dvfs {
+		compatible = "nvidia,tegra210-dvfs";
+	};
+
+	gpu-dvfs-rework {
+		status = "disabled";
+	};
+
+	chosen {
+		bootargs = "earlycon=uart8250,mmio32,0x70006000";
+		stdout-path = &uarta;
+	};
+
+	firmware {
+		android {
+			compatible = "android,firmware";
+			hardware = "e2220";
+		};
+	};
 
 	i2c@7000c000 {
 		pca9535_0: pca9535@20 {
