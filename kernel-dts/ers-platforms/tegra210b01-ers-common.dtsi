@@ -316,6 +316,7 @@
 
 	xusb@70090000 {
 		status = "okay";
+		compatible = "nvidia,tegra210b01-xhci";
 		extcon-cables = <&id_gpio_extcon 1>;
 		extcon-cable-names = "id";
 		#extcon-cells = <1>;
@@ -327,7 +328,7 @@
 			<&tegra_padctl_uphy TEGRA_PADCTL_UPHY_USB3_P(1)>,
 			<&tegra_padctl_uphy TEGRA_PADCTL_UPHY_USB3_P(2)>;
 		phy-names = "utmi-0", "utmi-1", "utmi-2", "utmi-3",
-			"usb3-0", "usb3-1", "usb3-2";
+			"usb3-3", "usb3-1";
 		nvidia,pmc-wakeup =
 			<&tegra_pmc
 				PMC_WAKE_TYPE_EVENT 41 PMC_TRIGGER_TYPE_HIGH>,
@@ -344,6 +345,7 @@
 		phys =  <&tegra_padctl_uphy TEGRA_PADCTL_UPHY_UTMI_P(0)>,
 			<&tegra_padctl_uphy TEGRA_PADCTL_UPHY_USB3_P(0)>;
 		phy-names = "usb2", "usb3";
+		charger-detector = <&usb_cd>;
 	};
 
 	xotg {
