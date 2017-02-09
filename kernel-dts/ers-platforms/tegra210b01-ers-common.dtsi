@@ -67,7 +67,6 @@
 		nvidia,core-power-req-active-high;
 		nvidia,sys-clock-req-active-high;
 
-
 		io-pad-defaults {
 			pex-bias {
 				nvidia,deep-power-down-enable;
@@ -206,23 +205,6 @@
 
 	pcie-controller@1003000 {
 		nvidia,wake-gpio = <&gpio TEGRA_GPIO(A, 2) 0>;
-		dvdd-pex-pll-supply = <&max77620_ldo1>;
-		l0-dvddio-pex-supply = <&max77620_ldo1>;
-		l1-dvddio-pex-supply = <&max77620_ldo1>;
-		l2-dvddio-pex-supply = <&max77620_ldo1>;
-		l3-dvddio-pex-supply = <&max77620_ldo1>;
-		l4-dvddio-pex-supply = <&max77620_ldo1>;
-		l5-dvddio-pex-supply = <&max77620_ldo1>;
-		l6-dvddio-pex-supply = <&max77620_ldo1>;
-		hvdd-pex-pll-e-supply = <&max77620_sd3>;
-		l0-hvddio-pex-supply = <&max77620_sd3>;
-		l1-hvddio-pex-supply = <&max77620_sd3>;
-		l2-hvddio-pex-supply = <&max77620_sd3>;
-		l3-hvddio-pex-supply = <&max77620_sd3>;
-		l4-hvddio-pex-supply = <&max77620_sd3>;
-		l5-hvddio-pex-supply = <&max77620_sd3>;
-		l6-hvddio-pex-supply = <&max77620_sd3>;
-		vddio-pex-ctl-supply = <&max77620_sd3>;
 		status = "okay";
 		pci@1,0 {
 			nvidia,num-lanes = <4>;
@@ -413,7 +395,6 @@
 		clock-output-names = "dfllCPU_out";
 		status = "okay";
 		reg = <0x0 0x70110000 0x0 0x400>;
-		vdd-cpu-supply = <&cpu_ovr_reg>;
 		nvidia,pwm-to-pmic;
 		nvidia,init-uv = <1000000>;
 		nvidia,align-step-uv = <19200>; /* 19.2mv */
