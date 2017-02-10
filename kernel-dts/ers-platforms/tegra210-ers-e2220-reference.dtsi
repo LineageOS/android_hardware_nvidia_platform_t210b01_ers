@@ -21,17 +21,12 @@
  */
 
 #include <t210b01-soc/tegra210b01-soc-common-platform.dtsi>
-#include <dt-bindings/interrupt-controller/arm-gic.h>
-#include <dt-bindings/soc/tegra-pmc.h>
 #include <tegra210-soc/tegra210-trusty.dtsi>
-#include "ers-platforms/tegra210-ers-extgpio-e2220-1170-a00.dtsi"
 #include <panels/panel-j-1440-810-5-8.dtsi>
 #include <panels/panel-a-wuxga-8-0.dtsi>
 #include <panels/panel-s-wqxga-10-1.dtsi>
 #include <panels/panel-a-edp-1080p-14-0.dtsi>
 #include <t210-common-platforms/tegra210-ers-hdmi-e2190-1100-a00.dtsi>
-#include "ers-platforms/tegra210-ers-dp-e2220-1170-a00.dtsi"
-#include <t210-common-platforms/tegra210-ers-keys-e2220-1170-a00.dtsi>
 #include <tegra210-soc/tegra210-edp.dtsi>
 #include <t210-common-platforms/tegra210-ers-clk-init.dtsi>
 #include <dt-bindings/platform/t210/t210.h>
@@ -103,64 +98,10 @@
 
 			avdd_dsi_csi-supply = <&max77620_gpio7>;
 		};
-
-		i2c@546c0000 {
-			tca9548@6_0077 {
-				compatible = "nxp,pca9548";
-				reg = <0x77>;
-				#address-cells = <1>;
-				#size-cells = <0>;
-				vcc-supply = <&en_vdd_cam>;
-				skip_mux_detect;
-				force_bus_start = <T210_CAMERA_I2C_MUX_BUS(0)>;
-				i2c@0 {
-					reg = <0>;
-					i2c-mux,deselect-on-exit;
-				};
-				i2c@1 {
-					reg = <1>;
-					i2c-mux,deselect-on-exit;
-				};
-				i2c@2 {
-					reg = <2>;
-					i2c-mux,deselect-on-exit;
-				};
-				i2c@3 {
-					reg = <3>;
-					i2c-mux,deselect-on-exit;
-				};
-				i2c@4 {
-					reg = <4>;
-					i2c-mux,deselect-on-exit;
-				};
-				i2c@5 {
-					reg = <5>;
-					i2c-mux,deselect-on-exit;
-				};
-			};
-		};
 	};
 
 	memory@80000000 {
 		device_type = "memory";
 		reg = < 0x0 0x80000000 0x0 0x80000000>;
-	};
-
-	backlight {
-		compatible = "pwm-backlight";
-		status = "okay";
-		power-supply = <&max77620_sd3>;
-		panel-j-1440-810-5-8-bl {
-			pwms = <&tegra_pwm 0 29334>;
-		};
-		panel-a-wuxga-8-0-bl {
-			pwms = <&tegra_pwm 0 40161>;
-		};
-		panel-s-wqxga-10-1-bl {
-			pwms = <&tegra_pwm 0 1000000>;
-		};
-		panel-a-edp-1080p-14-0-bl {
-			pwms = <&tegra_pwm 0 1000000>;
-		};
 	};
 };
