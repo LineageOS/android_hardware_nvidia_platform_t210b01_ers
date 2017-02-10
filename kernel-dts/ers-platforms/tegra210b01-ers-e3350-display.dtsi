@@ -1,9 +1,5 @@
 /*
- * T210- DSC
- *
- * arch/arm64/boot/dts/tegra210-ers-e2220-1170-a00-00.dts
- *
- * Copyright (c) 2015-2016, NVIDIA CORPORATION.  All rights reserved.
+ * Copyright (c) 2017, NVIDIA CORPORATION.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -13,25 +9,14 @@
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
  * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
  * more details.
- *
- * You should have received a copy of the GNU General Public License along
- * with this program; if not, write to the Free Software Foundation, Inc.,
- * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
- *
  */
 
-#include <t210b01-soc/tegra210b01-soc-common-platform.dtsi>
-#include <tegra210-soc/tegra210-trusty.dtsi>
 #include <panels/panel-j-1440-810-5-8.dtsi>
 #include <panels/panel-a-wuxga-8-0.dtsi>
 #include <panels/panel-s-wqxga-10-1.dtsi>
 #include <panels/panel-a-edp-1080p-14-0.dtsi>
 #include <t210-common-platforms/tegra210-ers-hdmi-e2190-1100-a00.dtsi>
 #include <tegra210-soc/tegra210-edp.dtsi>
-#include <t210-common-platforms/tegra210-ers-clk-init.dtsi>
-#include <dt-bindings/platform/t210/t210.h>
-#include <dt-bindings/reset/tegra210-car.h>
-#include <t210-common-platforms/tegra210-cpufreq.dtsi>
 
 / {
 	host1x {
@@ -98,10 +83,5 @@
 
 			avdd_dsi_csi-supply = <&max77620_gpio7>;
 		};
-	};
-
-	memory@80000000 {
-		device_type = "memory";
-		reg = < 0x0 0x80000000 0x0 0x80000000>;
 	};
 };

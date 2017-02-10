@@ -20,8 +20,8 @@
 
 /memreserve/ 0x80000000 0x00020000;
 
-#include "tegra210-ers-e2220-reference.dtsi"
 #include "tegra210b01-ers-common.dtsi"
+#include "tegra210b01-ers-e3350-display.dtsi"
 
 / {
 	model = "e3350";
