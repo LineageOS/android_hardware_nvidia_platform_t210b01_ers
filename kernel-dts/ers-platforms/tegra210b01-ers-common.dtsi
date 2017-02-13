@@ -17,7 +17,6 @@
  */
 
 #include <t210b01-soc/tegra210b01-soc-common-platform.dtsi>
-#include <t210-common-platforms/tegra210-ers-clk-init.dtsi>
 #include <tegra210-soc/tegra210-prods.dtsi>
 #include <dt-bindings/interrupt-controller/arm-gic.h>
 #include <dt-bindings/soc/tegra-pmc.h>
