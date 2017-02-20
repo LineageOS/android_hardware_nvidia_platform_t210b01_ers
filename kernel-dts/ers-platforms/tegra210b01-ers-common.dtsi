@@ -24,6 +24,7 @@
 #include <tegra210-soc/tegra210-sdhci.dtsi>
 #include <t210-common-platforms/tegra210-pinmux-drive-sdmmc-common.dtsi>
 #include "tegra210b01-ers-emc-lpddr4.dtsi"
+#include "tegra210b01-ers-comms.dtsi"
 #include <tegra210-soc/tegra210-trusty.dtsi>
 #include <t210-common-platforms/tegra210-cpufreq.dtsi>
 #include <t210-common-platforms/tegra210-ers-keys-e2220-1170-a00.dtsi>
