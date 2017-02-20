@@ -120,8 +120,8 @@
 		status = "okay";
 	};
 
-	sdhci@700b0400 { /* used for SD device*/
-		uhs-mask = <0x1c>;
+	sdhci@700b0400 { /* M.2 SDIO */
+		uhs-mask = <0x8>;
 		power-off-rail;
 		nvidia,update-pinctrl-settings;
 		pinctrl-names = "sdmmc_schmitt_enable", "sdmmc_schmitt_disable", "sdmmc_clk_schmitt_enable", "sdmmc_clk_schmitt_disable", "sdmmc_drv_code", "sdmmc_default_drv_code";
@@ -131,10 +131,11 @@
 		pinctrl-3 = <&sdmmc3_clk_schmitt_disable_state>;
 		pinctrl-4 = <&sdmmc3_drv_code_1_8V>;
 		pinctrl-5 = <&sdmmc3_default_drv_code_3_3V>;
-		status = "disabled";
+		default-drv-type = <1>;
+		status = "okay";
 	};
 
-	sdhci@700b0200 { /* used for SDIO device*/
+	sdhci@700b0200 { /* unused */
 		uhs-mask = <0x8>;
 		bus-width = <4>;
 		power-off-rail;
