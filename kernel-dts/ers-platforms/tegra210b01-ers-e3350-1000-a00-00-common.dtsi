@@ -45,7 +45,7 @@
 	firmware {
 		android {
 			compatible = "android,firmware";
-			hardware = "e2220";
+			hardware = "e3350";
 		};
 	};
 
