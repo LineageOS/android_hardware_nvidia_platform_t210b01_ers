@@ -26,6 +26,7 @@
 #include "tegra210b01-ers-emc-lpddr4.dtsi"
 #include <tegra210-soc/tegra210-trusty.dtsi>
 #include <t210-common-platforms/tegra210-cpufreq.dtsi>
+#include <t210-common-platforms/tegra210-ers-keys-e2220-1170-a00.dtsi>
 
 #define EXTCON_NONE             0
 #define EXTCON_USB              1
@@ -42,6 +43,12 @@
 		reg = <0x0 0x7009f000 0x0 0x1000>;
 		#extcon-cells = <1>;
 		status = "okay";
+	};
+
+	gpio-keys {
+		home {
+			status = "disabled";
+		};
 	};
 
 	psy_extcon {
