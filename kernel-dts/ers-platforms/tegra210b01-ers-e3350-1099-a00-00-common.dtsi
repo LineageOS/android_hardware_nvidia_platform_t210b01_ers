@@ -19,4 +19,29 @@
 #include "tegra210b01-ers-e3350-1000-a00-00-common.dtsi"
 
 / {
+	pinctrl@7009f000 {
+		pinmux {
+			usb3-std-A-J8110 {
+				status = "disabled";
+			};
+			usb3-std-A-J8120 {
+				status = "disabled";
+			};
+			pcie-0 {
+				nvidia,lanes = "uphy-lane-3", "uphy-lane-2",
+						"uphy-lane-1", "uphy-lane-4";
+			};
+		};
+	};
+
+	i2c@7000c000 {
+		pca9535@25 {
+			pcie-mux-output-low {
+				gpios = <5 0 6 0 7 0>;
+			};
+			pcie-mux-output-high {
+				status = "disabled";
+			};
+		};
+	};
 };

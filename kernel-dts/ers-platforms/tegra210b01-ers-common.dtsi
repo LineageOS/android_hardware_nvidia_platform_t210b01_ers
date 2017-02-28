@@ -321,11 +321,11 @@
 				status = "disabled";
 			};
 			pcie-0 {
-				nvidia,lanes = "uphy-lane-3";
+				nvidia,lanes = "uphy-lane-3", "uphy-lane-2";
 				nvidia,function = "pcie";
 				nvidia,pcie-controller = <0>;
 				nvidia,pcie-lane-select =
-					<TEGRA_PADCTL_PCIE_LANE_X1>;
+					<TEGRA_PADCTL_PCIE_LANE_X4>;
 			};
 			pcie-1 {
 				nvidia,lanes = "uphy-lane-0";
