@@ -53,22 +53,28 @@
 		pca9535_0: pca9535@20 {
 			compatible = "nxp,pca9535";
 			gpio-controller;
+			#gpio-cells = <2>;
 			#size-cells = <2>;
 			reg = <0x20>;
+			vcc-supply = <&max77620_sd3>;
 			status = "okay";
 		};
 		pca9535_1: pca9535@21 {
 			compatible = "nxp,pca9535";
 			gpio-controller;
+			#gpio-cells = <2>;
 			#size-cells = <2>;
 			reg = <0x21>;
+			vcc-supply = <&max77620_sd3>;
 			status = "okay";
 		};
 		pca9535_2: pca9535@22 {
 			compatible = "nxp,pca9535";
 			gpio-controller;
+			#gpio-cells = <2>;
 			#size-cells = <2>;
 			reg = <0x22>;
+			vcc-supply = <&max77620_sd3>;
 			status = "okay";
 			pcie-mux-output-high {
 				gpio-hog;
@@ -80,22 +86,28 @@
 		pca9535_3: pca9535@23 {
 			compatible = "nxp,pca9535";
 			gpio-controller;
+			#gpio-cells = <2>;
 			#size-cells = <2>;
 			reg = <0x23>;
+			vcc-supply = <&max77620_sd3>;
 			status = "okay";
 		};
 		pca9535_4: pca9535@24 {
 			compatible = "nxp,pca9535";
 			gpio-controller;
+			#gpio-cells = <2>;
 			#size-cells = <2>;
 			reg = <0x24>;
+			vcc-supply = <&max77620_sd3>;
 			status = "okay";
 		};
 		pca9535_5: pca9535@25 {
 			compatible = "nxp,pca9535";
 			gpio-controller;
+			#gpio-cells = <2>;
 			#size-cells = <2>;
 			reg = <0x25>;
+			vcc-supply = <&max77620_sd3>;
 			status = "okay";
 			pcie-mux-output-low {
 				gpio-hog;
