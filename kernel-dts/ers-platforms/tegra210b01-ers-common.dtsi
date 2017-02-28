@@ -115,7 +115,7 @@
 	};
 
 	sdhci@700b0600 { /* used for eMMC device*/
-		uhs-mask = <0x60>;
+		uhs-mask = <0x0>;
 		power-off-rail;
 		status = "okay";
 	};
