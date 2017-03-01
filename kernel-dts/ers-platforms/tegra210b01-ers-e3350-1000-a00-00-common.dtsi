@@ -29,19 +29,6 @@
 	nvidia,dtsfilename = __FILE__;
 	nvidia,fastboot-usb-pid = <0x7100>;
 
-	dvfs {
-		compatible = "nvidia,tegra210-dvfs";
-	};
-
-	gpu-dvfs-rework {
-		status = "disabled";
-	};
-
-	chosen {
-		bootargs = "earlycon=uart8250,mmio32,0x70006000";
-		stdout-path = &uarta;
-	};
-
 	firmware {
 		android {
 			compatible = "android,firmware";
