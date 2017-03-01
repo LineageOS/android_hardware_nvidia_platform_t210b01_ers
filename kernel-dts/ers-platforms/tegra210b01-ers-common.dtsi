@@ -30,6 +30,7 @@
 #include <tegra210-soc/tegra210-thermal-Tboard-Tdiode.dtsi>
 #include <t210-common-platforms/tegra210-cpufreq.dtsi>
 #include <t210-common-platforms/tegra210-ers-keys-e2220-1170-a00.dtsi>
+#include "tegra210b01-ers-camera-e3333-a00.dtsi"
 
 #define EXTCON_NONE             0
 #define EXTCON_USB              1
@@ -439,6 +440,35 @@
 
 	gpu-dvfs-rework {
 		status = "disabled";
+  };
+	host1x {
+		assigned-clocks = <&tegra_car TEGRA210_CLK_EXTERN3>,
+				<&tegra_car TEGRA210_CLK_CILE>,
+				<&tegra_car TEGRA210_CLK_CILCD>,
+				<&tegra_car TEGRA210_CLK_CILAB>,
+				<&tegra_car TEGRA210_CLK_VI_I2C>,
+				<&tegra_car TEGRA210_CLK_CLK_OUT_3_MUX>,
+				<&tegra_car TEGRA210_CLK_VI>,
+				<&tegra_car TEGRA210_CLK_ISP>,
+				<&tegra_car TEGRA210_CLK_ISPB>;
+		assigned-clock-parents = <&tegra_car TEGRA210_CLK_PLL_P>,
+					<&tegra_car TEGRA210_CLK_PLL_P>,
+					<&tegra_car TEGRA210_CLK_PLL_P>,
+					<&tegra_car TEGRA210_CLK_PLL_P>,
+					<&tegra_car TEGRA210_CLK_PLL_P>,
+					<&tegra_car TEGRA210_CLK_EXTERN3>,
+					<&tegra_car TEGRA210_CLK_PLL_C>,
+					<&tegra_car TEGRA210_CLK_PLL_C>,
+					<&tegra_car TEGRA210_CLK_ISP>;
+		assigned-clock-rates = <24000000>,
+					<102000000>,
+					<102000000>,
+					<102000000>,
+					<102000000>,
+					<24000000>,
+					<408000000>,
+					<408000000>,
+					<408000000>;
 	};
 
 	thermal-zones {
