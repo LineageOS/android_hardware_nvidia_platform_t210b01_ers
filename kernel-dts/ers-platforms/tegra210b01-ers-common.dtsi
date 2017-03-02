@@ -218,7 +218,7 @@
 
 	watchdog@60005100 {
 		nvidia,enable-on-init;
-		nvidia,heartbeat-init = <120>;
+		timeout-sec = <120>;
 		status = "okay";
 	};
 
