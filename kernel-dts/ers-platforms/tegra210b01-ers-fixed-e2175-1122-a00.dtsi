@@ -144,7 +144,7 @@
 			regulator-name = "vdd-usb-5v0";
 			regulator-min-microvolt = <5000000>;
 			regulator-max-microvolt = <5000000>;
-			vin-supply = <&vdd_3v3>;
+			gpio = <&pca9535_2 12 0>;
 			regulator-disable-on-shutdown;
 			enable-active-high;
 		};
@@ -158,6 +158,32 @@
 			regulator-max-microvolt = <1200000>;
 			enable-active-high;
 			startup-delay-us = <250000>;
+		};
+
+		vdd_usb1_5v0: regulator@14 {
+			compatible = "regulator-fixed-sync";
+			reg = <14>;
+			status = "okay";
+			regulator-name = "vdd-usb1-5v0";
+			regulator-min-microvolt = <5000000>;
+			regulator-max-microvolt = <5000000>;
+			gpio = <&gpio TEGRA_GPIO(CC, 4) 0>;
+			enable-active-high;
+			vin-supply = <&vdd_usb_5v0>;
+			regulator-disable-on-shutdown;
+		};
+
+		vdd_usb23_5v0: regulator@15 {
+			compatible = "regulator-fixed-sync";
+			reg = <15>;
+			status = "okay";
+			regulator-name = "vdd-usb23-5v0";
+			regulator-min-microvolt = <5000000>;
+			regulator-max-microvolt = <5000000>;
+			gpio = <&gpio TEGRA_GPIO(CC, 5) 0>;
+			enable-active-high;
+			vin-supply = <&vdd_usb_5v0>;
+			regulator-disable-on-shutdown;
 		};
 	};
 };
