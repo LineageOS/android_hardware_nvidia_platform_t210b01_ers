@@ -185,5 +185,15 @@
 			vin-supply = <&vdd_usb_5v0>;
 			regulator-disable-on-shutdown;
 		};
+
+		en_vddio_sdmmc3: regulator@16 {
+			compatible = "regulator-fixed-sync";
+			reg = <16>;
+			regulator-name = "en-vddio-sdmmc3";
+			regulator-min-microvolt = <1800000>;
+			regulator-max-microvolt = <1800000>;
+			gpio = <&gpio TEGRA_GPIO(I, 0) 0>;
+			enable-active-high;
+		};
 	};
 };
