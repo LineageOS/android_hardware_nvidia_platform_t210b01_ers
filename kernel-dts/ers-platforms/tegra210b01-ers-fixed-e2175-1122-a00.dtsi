@@ -160,6 +160,18 @@
 			startup-delay-us = <250000>;
 		};
 
+		vdd_usb_oc_5v0: regulator@13 {
+			compatible = "regulator-pinmux-fixed";
+			reg = <13>;
+			status = "okay";
+			regulator-name = "vdd-usb-oc-5v0";
+			regulator-min-microvolt = <5000000>;
+			regulator-max-microvolt = <5000000>;
+			vin-supply = <&vdd_3v3>;
+			enable-active-high;
+			pinctrl-names = "enable", "disable";
+		};
+
 		vdd_usb1_5v0: regulator@14 {
 			compatible = "regulator-fixed-sync";
 			reg = <14>;
