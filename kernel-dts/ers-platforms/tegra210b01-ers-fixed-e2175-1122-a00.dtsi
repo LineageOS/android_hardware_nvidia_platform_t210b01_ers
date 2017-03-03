@@ -74,7 +74,7 @@
 			regulator-name = "en-vdd-sd";
 			regulator-min-microvolt = <3300000>;
 			regulator-max-microvolt = <3300000>;
-			gpio = <&gpio TEGRA_GPIO(Z, 4) 0>;
+			gpio = <&gpio TEGRA_GPIO(L, 0) 0>;
 			enable-active-high;
 			vin-supply = <&vdd_3v3>;
 		};
@@ -158,16 +158,6 @@
 			regulator-max-microvolt = <1200000>;
 			enable-active-high;
 			startup-delay-us = <250000>;
-		};
-
-		en_vdd_sd3: regulator@13 {
-			compatible = "regulator-fixed-sync";
-			reg = <13>;
-			regulator-name = "en-vdd-sd3";
-			regulator-min-microvolt = <3300000>;
-			regulator-max-microvolt = <3300000>;
-			gpio = <&gpio TEGRA_GPIO(L, 0) 0>;
-			enable-active-high;
 		};
 	};
 };
