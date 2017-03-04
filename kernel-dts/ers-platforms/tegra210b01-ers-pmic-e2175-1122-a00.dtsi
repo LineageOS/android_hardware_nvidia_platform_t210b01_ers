@@ -251,7 +251,7 @@
 			status = "okay";
 			reg = <0>;
 			compatible = "pwm-regulator";
-			pwms = <&pwm_dfll0 0 2500>;
+			pwms = <&tegra_pwm_dfll 0 2500>;
 			regulator-name = "vdd-cpu";
 			regulator-min-microvolt = <708000>;
 			regulator-max-microvolt = <1322400>;
