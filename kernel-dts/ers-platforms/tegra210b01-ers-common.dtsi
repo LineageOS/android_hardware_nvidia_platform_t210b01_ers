@@ -280,7 +280,7 @@
 				nvidia,lanes = "uphy-lane-4";
 				nvidia,function = "usb3";
 				nvidia,usb3-port = <1>;
-				nvidia,usb2-map = <3>;
+				nvidia,usb2-map = <1>;
 				nvidia,port-cap =
 					<TEGRA_PADCTL_PORT_HOST_ONLY>;
 			};
@@ -294,7 +294,7 @@
 			usb3-std-A-J8120 {
 				nvidia,lanes = "uphy-lane-1";
 				nvidia,function = "usb3";
-				nvidia,usb3-port = <3>;
+				nvidia,usb3-port = <2>;
 				nvidia,usb2-map = <2>;
 				nvidia,port-cap =
 					<TEGRA_PADCTL_PORT_HOST_ONLY>;
@@ -304,25 +304,6 @@
 				nvidia,function = "xusb";
 				nvidia,port-cap =
 					<TEGRA_PADCTL_PORT_HOST_ONLY>;
-			};
-			usb3-std-A-J8130 {
-				nvidia,lanes = "uphy-lane-0";
-				nvidia,function = "usb3";
-				nvidia,usb3-port = <2>;
-				nvidia,usb2-map = <1>;
-				nvidia,port-cap =
-					<TEGRA_PADCTL_PORT_HOST_ONLY>;
-				status = "disabled";
-			};
-			hsic {
-				nvidia,lanes = "hsic-0";
-				nvidia,function = "hsic";
-				status = "disabled";
-			};
-			sata {
-				nvidia,lanes = "uphy-lane-7";
-				nvidia,function = "sata";
-				status = "disabled";
 			};
 			pcie-0 {
 				nvidia,lanes = "uphy-lane-3", "uphy-lane-2";
@@ -355,7 +336,7 @@
 			<&tegra_padctl_uphy TEGRA_PADCTL_UPHY_USB3_P(1)>,
 			<&tegra_padctl_uphy TEGRA_PADCTL_UPHY_USB3_P(2)>;
 		phy-names = "utmi-0", "utmi-1", "utmi-2", "utmi-3",
-			"usb3-3", "usb3-1";
+			"usb3-0", "usb3-1", "usb3-2";
 		nvidia,pmc-wakeup =
 			<&tegra_pmc
 				PMC_WAKE_TYPE_EVENT 41 PMC_TRIGGER_TYPE_HIGH>,
