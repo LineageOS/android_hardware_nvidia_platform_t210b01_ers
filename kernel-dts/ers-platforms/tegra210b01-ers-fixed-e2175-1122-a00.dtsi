@@ -207,5 +207,28 @@
 			gpio = <&gpio TEGRA_GPIO(I, 0) 0>;
 			enable-active-high;
 		};
+
+		en_vdd_lcd_1v8: regulator@17 {
+			compatible = "regulator-fixed-sync";
+			reg = <17>;
+			regulator-name = "en-vdd-lcd-1v8";
+			regulator-min-microvolt = <1800000>;
+			regulator-max-microvolt = <1800000>;
+			gpio = <&gpio TEGRA_GPIO(K, 1) 0>;
+			enable-active-high;
+		};
+
+		vdd_dis_1v2: regulator@18 {
+			compatible = "regulator-fixed-sync";
+			reg = <18>;
+			status = "okay";
+			regulator-name = "vdd-dis-1v2";
+			regulator-min-microvolt = <1200000>;
+			regulator-max-microvolt = <1200000>;
+			gpio = <&pca9535_2 14 1>;
+			regulator-boot-on;
+			regulator-always-on;
+			enable-active-high;
+		};
 	};
 };
