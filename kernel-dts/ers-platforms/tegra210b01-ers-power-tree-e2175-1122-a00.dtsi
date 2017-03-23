@@ -18,6 +18,7 @@
 
 #include "tegra210b01-ers-pmic-e2175-1122-a00.dtsi"
 #include "tegra210b01-ers-fixed-e2175-1122-a00.dtsi"
+#include "tegra210b01-ers-pmic-e2176-1001-a00.dtsi"
 
 / {
 	i2c@7000d000 {
