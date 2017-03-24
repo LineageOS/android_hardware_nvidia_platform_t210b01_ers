@@ -243,6 +243,16 @@
 				};
 			};
 		};
+
+		lpddr4_lv: fan53528@52 {
+			compatible = "fcs,fan53528";
+			reg = <0x52>;
+			status = "disabled";
+			regulator-name = "lpddr4-lv";
+			regulator-min-microvolt = <350000>;
+			regulator-max-microvolt = <1143750>;
+			fcs,suspend-voltage-selector = <1>;
+		};
 	};
 
 	pwm_regulators {
