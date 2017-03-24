@@ -22,12 +22,17 @@
 
 #include "tegra210b01-ers-common.dtsi"
 #include "tegra210b01-ers-e3350-display.dtsi"
+#include "tegra210b01-ers-e3350-eeprom-manager.dtsi"
 
 / {
 	model = "e3350";
 	compatible = "nvidia,e3350", "nvidia,tegra210b01";
 	nvidia,dtsfilename = __FILE__;
 	nvidia,fastboot-usb-pid = <0x7100>;
+
+	chosen {
+		board-has-eeprom;
+	};
 
 	firmware {
 		android {
