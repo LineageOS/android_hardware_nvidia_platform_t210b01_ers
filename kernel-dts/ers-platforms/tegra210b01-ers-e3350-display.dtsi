@@ -47,6 +47,7 @@
 		dsi {
 			nvidia,dsi-controller-vs = <DSI_VS_1>;
 			status = "okay";
+			nvidia,active-panel = <&panel_s_wuxga_8_0>;
 			panel-s-wuxga-8-0 {
 				status = "okay";
 				nvidia,panel-rst-gpio = <&gpio TEGRA_GPIO(V, 2) 0>; /* PV2 */
@@ -288,6 +289,7 @@
 		sor {
 			status = "okay";
 			nvidia,hpd-gpio = <&gpio 230 0>; /*PCC6*/
+			nvidia,active-panel = <&panel_a_edp_1080p_14_0>;
 			panel-a-edp-1080p-14-0 {
 				nvidia,panel-bl-pwm-gpio = <&gpio TEGRA_GPIO(V, 0) 0>; /* PV0 */
 			};
