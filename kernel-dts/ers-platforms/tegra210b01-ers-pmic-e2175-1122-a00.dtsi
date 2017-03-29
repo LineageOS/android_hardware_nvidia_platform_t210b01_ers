@@ -64,8 +64,15 @@
 					maxim,active-fps-power-down-slot = <0>;
 				};
 
-				pin_gpio2_3 {
-					pins = "gpio2", "gpio3";
+				pin_gpio2 {
+					pins = "gpio2";
+					function = "fps-out";
+					drive-push-pull = <1>;
+					maxim,active-fps-source = <MAX77620_FPS_SRC_0>;
+				};
+
+				pin_gpio3 {
+					pins = "gpio3";
 					function = "fps-out";
 					drive-open-drain = <1>;
 					maxim,active-fps-source = <MAX77620_FPS_SRC_0>;
