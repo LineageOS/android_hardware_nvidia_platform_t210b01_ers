@@ -44,4 +44,11 @@
 			};
 		};
 	};
+
+	host1x {
+		dsi {
+			nvidia,dsi-csi-loopback = <1>;
+		};
+	};
+
 };
