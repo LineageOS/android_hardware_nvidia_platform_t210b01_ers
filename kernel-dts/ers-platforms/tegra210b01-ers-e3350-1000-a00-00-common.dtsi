@@ -120,4 +120,22 @@
 		compatible = "dummy-cooling-dev";
 		#cooling-cells = <2>; /* min followed by max */
 	};
+
+	platform-commands {
+		compatible ="platform-init";
+		status = "disabled";
+		bootloader-status = "okay";
+
+		/* Enable LDO5 and LDO6 */
+		block@0 {
+			type = "i2c";
+			controller = <&i2c5>;
+			device-address = <0x3C>;
+			block-delay = <100>;
+			commands = <0x2D 0xC0 0xC0
+				    0x4B 0xC0 0xC0
+				    0x2F 0xC0 0xC0
+				    0x2C 0xC0 0xC0>;
+		};
+	};
 };
