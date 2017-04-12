@@ -21,6 +21,40 @@
 #include "tegra210b01-ers-pmic-e2176-1001-a00.dtsi"
 
 / {
+
+	host1x {
+		/* tegradc.0 */
+		dc@54200000 {
+			avdd_dsi_csi-supply = <&max77620_gpio7>;
+			avdd_lcd-supply = <&vdd_3v3>;
+			dvdd_lcd-supply = <&en_vdd_lcd_1v8>;
+			vdd_lcd_bl_en-supply = <&lcd_bl_en>;
+			vdd_lcd_bl-supply = <&battery_reg>;
+			vdd_ds_1v8-supply = <&battery_reg>;
+		};
+		/* tegradc.1 */
+		dc@54240000 {
+			avdd_hdmi-supply = <&max77620_ldo8>;
+			avdd_hdmi_pll-supply = <&max77620_sd3>;
+			vdd_hdmi_5v0-supply = <&vdd_hdmi>;
+			vdd_lcd_bl-supply = <&battery_reg>;
+			vdd_ds_1v8-supply = <&battery_reg>;
+
+			/* dp */
+			vdd-dp-pwr-supply = <&vdd_3v3>;
+			avdd-dp-pll-supply = <&max77620_sd3>;
+			vdd-edp-sec-mode-supply = <&vdd_sys_boost>;
+			vdd-dp-pad-supply = <&max77620_ldo8>;
+		};
+		vi {
+			avdd_dsi_csi-supply = <&max77620_gpio7>;
+		};
+		i2c@546c0000 {
+			bus-pullup-supply = <&en_vdd_cam>;
+			avdd_dsi_csi-supply = <&max77620_gpio7>;
+		};
+	};
+
 	i2c@7000d000 {
 		max77620@3c {
 			regulators {
@@ -181,6 +215,103 @@
 				nvidia,enable-controller-reset;
 				nvidia,write-commands = <0x00000016 0x00000020>;
 			};
+		};
+	};
+
+	xusb@70090000 {
+		hvdd_usb-supply = <&vdd_3v3>;
+		avdd_pll_utmip-supply = <&max77620_sd3>;
+		avddio_usb-supply = <&max77620_ldo1>;
+		avddio_pll_uerefe-supply = <&max77620_ldo7>; /* Is it always ON? */
+	};
+
+
+	xudc@700d0000 {
+		hvdd_usb-supply = <&vdd_3v3>;
+		avdd_pll_utmip-supply = <&max77620_sd3>;
+		avddio_usb-supply = <&max77620_ldo1>;
+	};
+
+	xotg {
+		usb_vbus-supply = <&battery_reg>;
+	};
+
+	pinctrl@7009f000 {
+		vbus-0-supply = <&vdd_usb23_5v0>;
+		/* Use the below regulators when OC support is enabled
+		vbus-1-supply = <&vdd_usb_oc_5v0>;
+		vbus-2-supply = <&vdd_usb_oc_5v0>;
+		vbus-3-supply = <&vdd_usb_oc_5v0>;
+		*/
+		vbus-1-supply = <&vdd_usb1_5v0>;
+		vbus-2-supply = <&battery_reg>;
+		vbus-3-supply = <&battery_reg>;
+		vddio-hsic-supply = <&max77620_ldo0>;
+		avdd_pll_uerefe-supply = <&max77620_ldo7>;
+		hvdd_pex_pll_e-supply = <&max77620_sd3>;
+		dvdd_pex_pll-supply = <&max77620_ldo1>;
+		hvddio_pex-supply = <&max77620_sd3>;
+		dvddio_pex-supply = <&max77620_ldo1>;
+	};
+
+	sdhci@700b0600 { /* eMMC device (SDMMC4) regulator settings */
+		vqmmc-supply = <&max77620_sd3>;
+		vmmc-supply = <&vdd_3v3>;
+	};
+
+	sdhci@700b0400 { /* SD device (SDMMC3) regulator settings */
+		vqmmc-supply = <&en_vddio_sdmmc3>;
+		vmmc-supply = <&vdd_3v3>;
+	};
+
+	sdhci@700b0200 { /* SDIO device (SDMMC2) regulator settings */
+		vqmmc-supply = <&max77620_sd3>;
+		vmmc-supply = <&vdd_3v3>;
+	};
+
+	sdhci@700b0000 { /* SD device (SDMMC1) regulator settings */
+		vqmmc-supply = <&max77620_ldo2>;
+		vmmc-supply = <&en_vdd_sd>;
+	};
+
+	pcie-controller@1003000 {
+		dvdd-pex-pll-supply = <&max77620_ldo1>;
+		l0-dvddio-pex-supply = <&max77620_ldo1>;
+		l1-dvddio-pex-supply = <&max77620_ldo1>;
+		l2-dvddio-pex-supply = <&max77620_ldo1>;
+		l3-dvddio-pex-supply = <&max77620_ldo1>;
+		l4-dvddio-pex-supply = <&max77620_ldo1>;
+		l5-dvddio-pex-supply = <&max77620_ldo1>;
+		l6-dvddio-pex-supply = <&max77620_ldo1>;
+		hvdd-pex-pll-e-supply = <&max77620_sd3>;
+		l0-hvddio-pex-supply = <&max77620_sd3>;
+		l1-hvddio-pex-supply = <&max77620_sd3>;
+		l2-hvddio-pex-supply = <&max77620_sd3>;
+		l3-hvddio-pex-supply = <&max77620_sd3>;
+		l4-hvddio-pex-supply = <&max77620_sd3>;
+		l5-hvddio-pex-supply = <&max77620_sd3>;
+		l6-hvddio-pex-supply = <&max77620_sd3>;
+		vddio-pex-ctl-supply = <&max77620_sd3>;
+	};
+
+	clock@70110000 {
+                vdd-cpu-supply = <&cpu_ovr_reg>;
+	};
+
+	cpu_edp {
+		status = "okay";
+		nvidia,edp_limit = <25000>;
+	};
+
+	gpu_edp {
+		status = "okay";
+		nvidia,edp_limit = <20000>;
+	};
+
+	spi@7000da00 {
+		spi-touch-sharp19x12@0 {
+			avdd-supply = <&max77620_ldo5>;
+			dvdd-supply = <&max77620_ldo6>;
 		};
 	};
 };
