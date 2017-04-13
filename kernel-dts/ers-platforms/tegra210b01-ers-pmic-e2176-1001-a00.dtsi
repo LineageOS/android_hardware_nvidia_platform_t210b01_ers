@@ -34,6 +34,20 @@
 					regulator-init-mode = <REGULATOR_MODE_NORMAL>;
 				};
 
+				m2vout {
+					regulator-name = "vdd-mvout2";
+					regulator-min-microvolt = <250000>;
+					regulator-max-microvolt = <1525000>;
+					regulator-init-mode = <REGULATOR_MODE_NORMAL>;
+				};
+
+				m3vout {
+					regulator-name = "vdd-mvout3";
+					regulator-min-microvolt = <250000>;
+					regulator-max-microvolt = <1525000>;
+					regulator-init-mode = <REGULATOR_MODE_NORMAL>;
+				};
+
 				cpu_max_reg: m4vout {
 					regulator-name = "vdd-cpu";
 					regulator-min-microvolt = <708000>;
