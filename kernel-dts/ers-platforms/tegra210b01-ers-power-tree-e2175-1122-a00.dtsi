@@ -205,6 +205,8 @@
 
 	pmc@7000e400 {
 		bootrom-commands {
+			#address-cells = <1>;
+			#size-cells = <0>;
 			commands@4-003c {
 				nvidia,command-names = "pmic-rails";
 				reg = <0x3c>;
