@@ -263,15 +263,15 @@
 	};
 
 	pinctrl@7009f000 {
-		vbus-0-supply = <&vdd_usb23_5v0>;
+		vbus-0-supply = <&vdd_usb23_5v0>; /* usb23_5v0 : VBUS_EN1 */
 		/* Use the below regulators when OC support is enabled
 		vbus-1-supply = <&vdd_usb_oc_5v0>;
 		vbus-2-supply = <&vdd_usb_oc_5v0>;
 		vbus-3-supply = <&vdd_usb_oc_5v0>;
 		*/
-		vbus-1-supply = <&vdd_usb1_5v0>;
-		vbus-2-supply = <&battery_reg>;
-		vbus-3-supply = <&battery_reg>;
+		vbus-1-supply = <&vdd_usb1_5v0>; /* usb1_5v0 : VBUS_EN0 */
+		vbus-2-supply = <&vdd_usb1_5v0>;
+		vbus-3-supply = <&vdd_usb1_5v0>;
 		vddio-hsic-supply = <&max77620_ldo0>;
 		avdd_pll_uerefe-supply = <&max77620_ldo7>;
 		hvdd_pex_pll_e-supply = <&max77620_sd3>;
