@@ -43,6 +43,25 @@
 					gpio = <&max77620 5 0>;
 				};
 			};
+
+			override@4 {
+				target = <&tegra_pwm_dfll>;
+				_overlay_ {
+					status = "disabled";
+				};
+			};
+
+			override@5 {
+				target = <&tegra_clk_dfll>;
+				_overlay_ {
+					vdd-cpu-supply = <&cpu_max_reg>;
+					delete-target-property = "nvidia,pwm-to-pmic";
+					nvidia,align-offset-uv = <0>;
+					nvidia,align-step-uv = <5000>;
+					nvidia,i2c-fs-rate = <400000>;
+					nvidia,sample-rate = <12500>;
+				};
+			};
 		};
 	};
 };
