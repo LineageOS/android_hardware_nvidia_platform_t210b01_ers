@@ -85,6 +85,7 @@
 				#address-cells = <1>;
 				#size-cells = <0>;
 				vcc-supply = <&en_vdd_cam>;
+				vcc-pullup-supply = <&vdd_aux_3v3>;
 				skip_mux_detect;
 				force_bus_start = <CAMERA_I2C_MUX_BUS(0)>;
 				i2c@0 {
