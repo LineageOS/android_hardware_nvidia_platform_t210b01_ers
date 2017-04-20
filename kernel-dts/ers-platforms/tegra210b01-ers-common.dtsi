@@ -364,6 +364,10 @@
 		};
 	};
 
+	pwm@7000a000 {
+		nvidia,no-clk-sleeping-in-ops;
+	};
+
 	pwm@70110000 {
 		pinctrl-0 = <&dvfs_pwm_active_state>;
 		pinctrl-1 = <&dvfs_pwm_inactive_state>;
