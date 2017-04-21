@@ -36,6 +36,13 @@
 					status = "okay";
 				};
 			};
+
+			override@3 {
+				target = <&vdd_sys_boost>;
+				_overlay_ {
+					gpio = <&max77620 5 0>;
+				};
+			};
 		};
 	};
 };
