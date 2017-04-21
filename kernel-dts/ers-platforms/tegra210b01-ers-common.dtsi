@@ -89,32 +89,6 @@
 		nvidia,sys-clock-req-active-high;
 
 		nvidia,restrict-voltage-switch;
-		iopad-defaults {
-			audio-hv-pads {
-				pins = "audio-hv";
-				nvidia,power-source-voltage = <TEGRA_IO_PAD_VOLTAGE_1800000UV>;
-			};
-
-			spi-hv-pads {
-				pins = "spi-hv";
-				nvidia,power-source-voltage = <TEGRA_IO_PAD_VOLTAGE_1800000UV>;
-			};
-
-			gpio-pads {
-				pins = "gpio";
-				nvidia,power-source-voltage = <TEGRA_IO_PAD_VOLTAGE_1800000UV>;
-			};
-
-			pex-io-pads {
-				pins = "pex-bias", "pex-clk1", "pex-clk2";
-				low-power-enable;
-			};
-
-			sdmmc-io-pads {
-				pins = "sdmmc1", "sdmmc3";
-				nvidia,enable-voltage-switching;
-			};
-		};
 	};
 
 	sdhci@700b0600 { /* used for eMMC device*/
