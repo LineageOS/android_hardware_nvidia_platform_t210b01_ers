@@ -17,6 +17,8 @@
 
 #include "ers-platforms/tegra210b01-ers-e3350-1099-a00-00-common.dtsi"
 #include "ers-platforms/tegra210b01-cvb-e3320-1000-a00.dtsi"
+#include "ers-platforms/tegra210b01-e3350-1099-a00-padvoltage-default.dtsi"
+#include "ers-platforms/tegra210b01-e3350-1099-a00-pinmux.dtsi"
 #include "ers-platforms/tegra210b01-ers-power-tree-e2175-1122-a00.dtsi"
 #include "ers-plugin-manager/tegra210b01-ers-plugin-manager.dtsi"
 
