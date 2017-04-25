@@ -12,7 +12,7 @@
  * more details.
  */
 
-#include <dt-bindings/pinctrl/pinctrl-tegra-io-pad.h>
+#include <dt-bindings/pinctrl/pinctrl-tegra.h>
 
 / {
 	pinmux@700008d4 {
@@ -493,9 +493,9 @@
 				nvidia,lpdr = <TEGRA_PIN_DISABLE>;
 			};
 
-			pz5 {
-				nvidia,pins = "pz5";
-				nvidia,function = "soc";
+			pz4 {
+				nvidia,pins = "pz4";
+				nvidia,function = "sdmmc1";
 				nvidia,pull = <TEGRA_PIN_PULL_UP>;
 				nvidia,tristate = <TEGRA_PIN_DISABLE>;
 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
@@ -1293,12 +1293,12 @@
 				nvidia,lpdr = <TEGRA_PIN_DISABLE>;
 			};
 
-			pz4 {
-				nvidia,pins = "pz4";
+			pz5 {
+				nvidia,pins = "pz5";
 				nvidia,function = "rsvd1";
-				nvidia,pull = <TEGRA_PIN_PULL_NONE>;
+				nvidia,pull = <TEGRA_PIN_PULL_UP>;
 				nvidia,tristate = <TEGRA_PIN_DISABLE>;
-				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
+				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
 				nvidia,lpdr = <TEGRA_PIN_DISABLE>;
 			};
 

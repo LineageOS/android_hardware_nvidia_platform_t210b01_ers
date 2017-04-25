@@ -35,8 +35,8 @@
 				pins="cam";
 				nvidia,power-source-voltage = <TEGRA_IO_PAD_VOLTAGE_1800000UV>;
 			};
-			pex-ctl-pads {
-				pins="pex-ctl";
+			pex-ctrl-pads {
+				pins="pex-ctrl";
 				nvidia,power-source-voltage = <TEGRA_IO_PAD_VOLTAGE_1800000UV>;
 			};
 			sdmmc1-pads {
