@@ -380,7 +380,7 @@
         };
 
 	dvfs {
-		compatible = "nvidia,tegra210-dvfs";
+		compatible = "nvidia,tegra210b01-dvfs", "nvidia,tegra210-dvfs";
 	};
 
 	gpu-dvfs-rework {
