@@ -418,6 +418,11 @@
 		compatible = "nvidia,tegra210b01-dvfs", "nvidia,tegra210-dvfs";
 	};
 
+	tegra-supply-tests {
+		compatible = "nvidia,tegra-supply-tests";
+		vdd-core-supply=<&max77620_sd0>;
+	};
+
 	gpu-dvfs-rework {
 		status = "okay";
 	};
