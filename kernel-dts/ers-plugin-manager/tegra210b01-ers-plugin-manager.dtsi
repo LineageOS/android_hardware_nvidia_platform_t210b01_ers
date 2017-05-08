@@ -62,6 +62,20 @@
 					nvidia,sample-rate = <12500>;
 				};
 			};
+
+			override@7 {
+				target = <&{/xusb@70090000}>;
+				_overlay_ {
+					avddio_pll_uerefe-supply = <&max77620_sd3>;
+				};
+			};
+
+			override@8 {
+				target = <&{/pinctrl@7009f000}>;
+				_overlay_ {
+					avdd_pll_uerefe-supply = <&max77620_sd3>;
+				};
+			};
 		};
 
 		fragement@1 {
