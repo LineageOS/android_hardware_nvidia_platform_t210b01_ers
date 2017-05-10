@@ -15,7 +15,7 @@
 / {
 	plugin-manager {
 		fragement@0 {
-			ids = "2176-1001-000";
+			ids = "2176-1001-000", "2176-0310-001", "2176-0211-001";
 			override@0 {
 				target = <&gpu_ovr_reg>;
 				_overlay_ {
@@ -54,12 +54,43 @@
 			override@5 {
 				target = <&tegra_clk_dfll>;
 				_overlay_ {
-					vdd-cpu-supply = <&cpu_max_reg>;
+					vdd-cpu-supply = <&m4_max_reg>;
 					delete-target-property = "nvidia,pwm-to-pmic";
 					nvidia,align-offset-uv = <0>;
 					nvidia,align-step-uv = <5000>;
 					nvidia,i2c-fs-rate = <400000>;
 					nvidia,sample-rate = <12500>;
+				};
+			};
+		};
+
+		fragement@1 {
+			ids = "2176-0211-001";
+			override@0 {
+				target = <&max77812>;
+				_overlay_ {
+					reg = <0x33>;
+				};
+			};
+
+			override@1 {
+				target = <&m3_max_reg>;
+				_overlay_ {
+					regulator-name = "vdd-cpu";
+				};
+			};
+
+			override@2 {
+				target = <&m4_max_reg>;
+				_overlay_ {
+					regulator-name = "vdd-lp4lv";
+				};
+			};
+
+			override@3 {
+				target = <&tegra_clk_dfll>;
+				_overlay_ {
+					vdd-cpu-supply = <&m3_max_reg>;
 				};
 			};
 		};
