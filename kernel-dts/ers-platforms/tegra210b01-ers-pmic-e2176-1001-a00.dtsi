@@ -28,8 +28,8 @@
 			regulators {
 				gpu_max_reg: m1vout {
 					regulator-name = "vdd-gpu";
-					regulator-min-microvolt = <710000>;
-					regulator-max-microvolt = <1320000>;
+					regulator-min-microvolt = <250000>;
+					regulator-max-microvolt = <1525000>;
 					regulator-init-microvolt = <1000000>;
 					regulator-init-mode = <REGULATOR_MODE_NORMAL>;
 				};
@@ -50,8 +50,8 @@
 
 				cpu_max_reg: m4vout {
 					regulator-name = "vdd-cpu";
-					regulator-min-microvolt = <708000>;
-					regulator-max-microvolt = <1350000>;
+					regulator-min-microvolt = <250000>;
+					regulator-max-microvolt = <1525000>;
 					regulator-always-on;
 					regulator-boot-on;
 					regulator-init-mode = <REGULATOR_MODE_NORMAL>;
