@@ -50,7 +50,7 @@
 		id = <0>;
 		bluedroid_pm,reset-gpio = <&gpio TEGRA_GPIO(H, 4) 0>;
 		bluedroid_pm,host-wake-gpio = <&gpio TEGRA_GPIO(H, 5) 0>;
-		bluedroid_pm,ext-wake-gpio = <&gpio TEGRA_GPIO(H, 3) 0>;
+		bluedroid_pm,ext-wake-gpio = <&pca9535_5 2 GPIO_ACTIVE_HIGH>;
 		avdd-supply = <&battery_reg>;
 		dvdd-supply = <&battery_reg>;
 		interrupt-parent = <&gpio>;
