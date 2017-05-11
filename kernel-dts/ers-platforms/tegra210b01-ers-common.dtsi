@@ -419,8 +419,9 @@
 	};
 
 	gpu-dvfs-rework {
-		status = "disabled";
-  };
+		status = "okay";
+	};
+
 	host1x {
 		assigned-clocks = <&tegra_car TEGRA210_CLK_EXTERN3>,
 				<&tegra_car TEGRA210_CLK_CILE>,
