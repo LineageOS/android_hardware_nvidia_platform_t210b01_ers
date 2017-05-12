@@ -30,7 +30,7 @@
 					regulator-name = "vdd-gpu";
 					regulator-min-microvolt = <250000>;
 					regulator-max-microvolt = <1525000>;
-					regulator-init-microvolt = <1000000>;
+					regulator-init-microvolt = <800000>;
 					regulator-init-mode = <REGULATOR_MODE_NORMAL>;
 				};
 

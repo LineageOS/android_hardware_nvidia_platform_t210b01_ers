@@ -298,7 +298,7 @@
 			regulator-name = "vdd-gpu";
 			regulator-min-microvolt = <500000>;
 			regulator-max-microvolt = <1120000>;
-			regulator-init-microvolt = <1000000>;
+			regulator-init-microvolt = <800000>;
 			regulator-n-voltages = <124>;
 			regulator-enable-ramp-delay = <2000>;
 			enable-gpio = <&max77620 6 0>;

@@ -387,7 +387,7 @@
 	clock@70110000 {
 		status = "okay";
 		nvidia,pwm-to-pmic;
-		nvidia,init-uv = <1000000>;
+		nvidia,init-uv = <800000>;
 		nvidia,sample-rate = <25000>;
 		nvidia,droop-ctrl = <0x00000f00>;
 		nvidia,force-mode = <1>;
