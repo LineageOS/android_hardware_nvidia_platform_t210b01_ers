@@ -417,6 +417,7 @@
 	dvfs {
 		compatible = "nvidia,tegra210b01-dvfs", "nvidia,tegra210-dvfs";
 		nvidia,core-rail-scaling-disabled;
+		nvidia,gpu-rail-scaling-disabled;
 	};
 
 	tegra-supply-tests {
@@ -425,7 +426,7 @@
 	};
 
 	gpu-dvfs-rework {
-		status = "okay";
+		status = "disabled";
 	};
 
 	host1x {
