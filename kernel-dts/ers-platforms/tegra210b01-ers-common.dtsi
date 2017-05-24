@@ -22,7 +22,6 @@
 #include <dt-bindings/interrupt-controller/arm-gic.h>
 #include <dt-bindings/soc/tegra-pmc.h>
 #include <tegra210-soc/tegra210-sdhci.dtsi>
-#include "tegra210b01-ers-emc-lpddr4.dtsi"
 #include "tegra210b01-ers-comms.dtsi"
 #include <tegra210-soc/tegra210-trusty.dtsi>
 #include <t210-common-platforms/tegra210-thermal-nct72-p2530.dtsi>
