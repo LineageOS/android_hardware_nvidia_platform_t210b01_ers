@@ -16,6 +16,7 @@
 
 / {
 	pmc@7000e400 {
+		clear-all-io-pads-dpd;
 		pinctrl-names="default";
 		pinctrl-0=<&pinctrl_iopad_default>;
 		pinctrl_iopad_default:iopad-defaults {
