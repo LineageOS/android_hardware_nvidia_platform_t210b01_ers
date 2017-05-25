@@ -32,6 +32,8 @@
 					regulator-max-microvolt = <1525000>;
 					regulator-init-microvolt = <800000>;
 					regulator-init-mode = <REGULATOR_MODE_NORMAL>;
+					regulator-ramp-delay = <20000>;
+					regulator-enable-ramp-delay = <5000>;
 				};
 
 				m2vout {
@@ -39,6 +41,8 @@
 					regulator-min-microvolt = <250000>;
 					regulator-max-microvolt = <1525000>;
 					regulator-init-mode = <REGULATOR_MODE_NORMAL>;
+					regulator-ramp-delay = <20000>;
+					regulator-enable-ramp-delay = <5000>;
 				};
 
 				m3_max_reg: m3vout {
@@ -46,6 +50,8 @@
 					regulator-min-microvolt = <250000>;
 					regulator-max-microvolt = <1525000>;
 					regulator-init-mode = <REGULATOR_MODE_NORMAL>;
+					regulator-ramp-delay = <20000>;
+					regulator-enable-ramp-delay = <5000>;
 				};
 
 				m4_max_reg: m4vout {
@@ -55,6 +61,8 @@
 					regulator-always-on;
 					regulator-boot-on;
 					regulator-init-mode = <REGULATOR_MODE_NORMAL>;
+					regulator-ramp-delay = <20000>;
+					regulator-enable-ramp-delay = <5000>;
 				};
 			};
 		};
