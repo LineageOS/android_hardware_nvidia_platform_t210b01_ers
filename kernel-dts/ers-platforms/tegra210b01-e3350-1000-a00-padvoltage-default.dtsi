@@ -72,6 +72,10 @@
 				pins="spi";
 				nvidia,power-source-voltage = <TEGRA_IO_PAD_VOLTAGE_1800000UV>;
 			};
+			sdmmc-io-pads {
+				pins = "sdmmc1", "sdmmc3";
+				nvidia,enable-voltage-switching;
+			};
 		};
 	};
 };
