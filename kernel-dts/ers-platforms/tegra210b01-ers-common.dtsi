@@ -100,6 +100,7 @@
 		uhs-mask = <0x8>;
 		power-off-rail;
 		nvidia,update-pinctrl-settings;
+		nvidia,skip-e-schmitt-disable-state;
 		default-drv-type = <1>;
 		status = "okay";
 	};
@@ -119,6 +120,7 @@
 		default-drv-type = <1>;
 		power-off-rail;
 		nvidia,update-pinctrl-settings;
+		nvidia,skip-e-schmitt-disable-state;
 		status = "okay";
 	};
 
