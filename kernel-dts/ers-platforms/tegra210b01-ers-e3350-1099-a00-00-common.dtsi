@@ -51,4 +51,8 @@
 		};
 	};
 
+        spi@70410000 {
+                nvidia,x4-is-ddr;
+                status = "okay";
+        };
 };
