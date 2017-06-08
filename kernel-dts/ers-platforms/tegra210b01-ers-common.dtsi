@@ -92,7 +92,7 @@
 	};
 
 	sdhci@700b0600 { /* used for eMMC device*/
-		uhs-mask = <0x0>;
+		uhs-mask = <0>;
 		power-off-rail;
 		status = "okay";
 	};
@@ -115,7 +115,7 @@
 
 	sdhci@700b0000 { /* used for SD device*/
 		nvidia,sd-device;
-		uhs-mask = <0x1C>;
+		uhs-mask = <0x8>;
 		cd-gpios = <&gpio TEGRA_GPIO(Z, 1) 0>;
 		wp-gpios = <&gpio TEGRA_GPIO(Z, 4) 0>;
 		default-drv-type = <1>;
