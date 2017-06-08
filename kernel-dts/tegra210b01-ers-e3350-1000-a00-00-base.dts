@@ -202,4 +202,19 @@
 			name-prefix = "s";
 		};
 	};
+
+	thermal-zones {
+		PMIC-Die {
+			status = "disabled";
+		};
+	};
+
+	pmc@7000e400 {
+		pinctrl_iopad_default:iopad-defaults {
+			sdmmc-io-pads {
+				pins = "sdmmc1", "sdmmc3";
+				nvidia,enable-voltage-switching;
+			};
+		};
+	};
 };
