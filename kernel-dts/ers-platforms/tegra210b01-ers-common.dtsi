@@ -784,4 +784,11 @@
 			widget-name = "AEC";
 		};
 	};
+
+	i2c@7000c000 {
+		tegra_nct72: temp-sensor@4c {
+			offset = <(-44)>;
+		};
+	};
+
 };
