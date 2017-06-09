@@ -22,7 +22,6 @@
 #include <tegra210-soc/tegra210-prods.dtsi>
 #include <dt-bindings/interrupt-controller/arm-gic.h>
 #include <dt-bindings/soc/tegra-pmc.h>
-#include <tegra210-soc/tegra210-sdhci.dtsi>
 #include "tegra210b01-ers-comms.dtsi"
 #include <tegra210-soc/tegra210-trusty.dtsi>
 #include <t210-common-platforms/tegra210-thermal-nct72-p2530.dtsi>
@@ -92,7 +91,8 @@
 	};
 
 	sdhci@700b0600 { /* used for eMMC device*/
-		uhs-mask = <0>;
+		uhs-mask = <0x40>;
+		/delete-property/ nvidia,enable-strobe-mode;
 		power-off-rail;
 		status = "okay";
 	};
