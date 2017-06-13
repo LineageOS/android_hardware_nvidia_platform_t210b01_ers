@@ -209,15 +209,6 @@
 		};
 	};
 
-	pmc@7000e400 {
-		pinctrl_iopad_default:iopad-defaults {
-			sdmmc-io-pads {
-				pins = "sdmmc1", "sdmmc3";
-				nvidia,enable-voltage-switching;
-			};
-		};
-	};
-
 	pinmux@700008d4 {
 		common {
 			sdmmc1_clk_pm0 {

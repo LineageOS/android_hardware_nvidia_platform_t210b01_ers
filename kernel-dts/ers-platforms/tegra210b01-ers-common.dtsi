@@ -88,6 +88,13 @@
 		nvidia,sys-clock-req-active-high;
 
 		nvidia,restrict-voltage-switch;
+
+		pinctrl_iopad_default:iopad-defaults {
+			sdmmc-io-pads {
+				pins = "sdmmc1", "sdmmc3";
+				nvidia,enable-voltage-switching;
+			};
+		};
 	};
 
 	sdhci@700b0600 { /* used for eMMC device*/
