@@ -65,7 +65,7 @@
 				pin_gpio2 {
 					pins = "gpio2";
 					function = "fps-out";
-					drive-push-pull = <1>;
+					drive-open-drain = <1>;
 					maxim,active-fps-source = <MAX77620_FPS_SRC_DEF>;
 				};
 
