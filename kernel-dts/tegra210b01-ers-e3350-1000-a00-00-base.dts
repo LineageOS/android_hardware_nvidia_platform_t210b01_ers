@@ -208,15 +208,4 @@
 			status = "disabled";
 		};
 	};
-
-	pinmux@700008d4 {
-		common {
-			sdmmc1_clk_pm0 {
-				/delete-property/ nvidia,loopback;
-			};
-			sdmmc3_clk_pp0 {
-				/delete-property/ nvidia,loopback;
-			};
-		};
-	};
 };
