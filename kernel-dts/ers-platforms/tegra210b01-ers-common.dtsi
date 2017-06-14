@@ -813,7 +813,11 @@
 	i2c@7000c000 {
 		tegra_nct72: temp-sensor@4c {
 			offset = <(-44)>;
+			ext {
+				shutdown-limit = <94>;
+			};
 		};
+
 	};
 
 };
