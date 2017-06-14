@@ -34,6 +34,10 @@
 #define EXTCON_USB_HOST         2
 
 / {
+        clock {
+                nvidia,tegra-ignore-clks = <TEGRA210_CLK_UARTB>;
+        };
+
 	memory@80000000 {
 		device_type = "memory";
 		reg = < 0x0 0x80000000 0x0 0x80000000>;
