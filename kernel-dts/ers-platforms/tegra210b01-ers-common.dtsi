@@ -97,8 +97,6 @@
 	};
 
 	sdhci@700b0600 { /* used for eMMC device*/
-		uhs-mask = <0x40>;
-		/delete-property/ nvidia,enable-strobe-mode;
 		power-off-rail;
 		status = "okay";
 	};
