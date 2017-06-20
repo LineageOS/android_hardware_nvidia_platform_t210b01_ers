@@ -122,6 +122,37 @@
 			};
 		};
 
+                fragement@2 {
+                        odm-data = "enable-tegra-wdt";
+                        override@0 {
+                                target = <&tegra_watchdog>;
+                                _overlay_ {
+                                        status = "okay";
+                                };
+                        };
+                };
+
+                fragement@3 {
+                        odm-data = "enable-pmic-wdt";
+                        override@0 {
+                                target = <&pmic_watchdog>;
+                                _overlay_ {
+                                        status = "okay";
+                                };
+                        };
+                };
+
+                fragement@4 {
+                        odm-data = "enable-tegra-wdt",
+				   "enable-pmic-wdt";
+                        override@0 {
+                                target = <&soft_wdt>;
+                                _overlay_ {
+                                        status = "disabled";
+                                };
+                        };
+                };
+
 		fragement@6 {
 			ids = "3320-*";
 			override@0 {
@@ -150,5 +181,6 @@
                                 };
                         };
                 };
+
 	};
 };

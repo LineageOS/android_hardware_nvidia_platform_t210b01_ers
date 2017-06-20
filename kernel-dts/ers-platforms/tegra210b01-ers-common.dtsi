@@ -196,7 +196,9 @@
 	};
 
 	watchdog@60005100 {
-		status = "okay";
+		nvidia,enable-on-init;
+		timeout-sec = <120>;
+		status = "disabled";
 	};
 
 	pcie-controller@1003000 {
