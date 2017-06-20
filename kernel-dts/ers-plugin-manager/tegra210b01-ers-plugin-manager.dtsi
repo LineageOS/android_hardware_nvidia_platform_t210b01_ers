@@ -60,6 +60,7 @@
 					nvidia,align-step-uv = <5000>;
 					nvidia,i2c-fs-rate = <400000>;
 					nvidia,sample-rate = <12500>;
+					nvidia,dfll-max-freq-khz = <1683000>;
 				};
 			};
 
@@ -74,6 +75,12 @@
 				target = <&{/pinctrl@7009f000}>;
 				_overlay_ {
 					avdd_pll_uerefe-supply = <&max77620_sd3>;
+				};
+			};
+			override@9 {
+				target = <&{/dvfs}>;
+				_overlay_ {
+					nvidia,gpu-max-freq-khz = <844800>;
 				};
 			};
 		};
@@ -105,6 +112,12 @@
 				target = <&tegra_clk_dfll>;
 				_overlay_ {
 					vdd-cpu-supply = <&m3_max_reg>;
+				};
+			};
+			override@4 {
+				target = <&{/dvfs}>;
+				_overlay_ {
+					nvidia,gpu-max-freq-khz = <614400>;
 				};
 			};
 		};
