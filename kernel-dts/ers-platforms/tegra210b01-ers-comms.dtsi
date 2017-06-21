@@ -57,6 +57,8 @@
 		dvdd-supply = <&battery_reg>;
 		interrupt-parent = <&gpio>;
 		interrupts = <TEGRA_GPIO(H, 5) 0x01>;
+		nvidia,pmc-wakeup = <&tegra_pmc
+				PMC_WAKE_TYPE_EVENT 52 PMC_TRIGGER_TYPE_RISING>;
 	};
 
 };
