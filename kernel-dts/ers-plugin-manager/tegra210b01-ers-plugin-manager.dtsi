@@ -153,6 +153,16 @@
                         };
                 };
 
+		fragement@5 {
+			ids = "2175-*";
+			override@0 {
+				target = <&lpddr4_lv>;
+				_overlay_ {
+					status = "okay";
+				};
+			};
+		};
+
 		fragement@6 {
 			ids = "3320-*";
 			override@0 {
