@@ -147,6 +147,8 @@
 			extcon-gpio,out-cable-names = <EXTCON_USB EXTCON_USB_HOST EXTCON_NONE>;
 			wakeup-source;
 			#extcon-cells = <1>;
+			nvidia,pmc-wakeup = <&tegra_pmc
+				PMC_WAKE_TYPE_GPIO 34 PMC_TRIGGER_TYPE_NONE>;
 		};
 	};
 
