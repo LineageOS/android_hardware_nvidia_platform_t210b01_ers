@@ -34,10 +34,6 @@
 		status = "disabled";
 	};
 
-	dfll-cdev-floor {
-		status = "disabled";
-	};
-
 	gpu-scaling-cdev {
 		status = "disabled";
 	};
