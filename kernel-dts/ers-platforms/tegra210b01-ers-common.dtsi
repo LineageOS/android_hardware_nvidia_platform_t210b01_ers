@@ -481,7 +481,7 @@
 		compatible = "nvidia,tegra210-rail-scaling-cdev";
 		cdev-type = "gpu_scaling";
 		nvidia,constraint;
-		nvidia,trips = <&gpu_scaling_trip0 950 &gpu_scaling_trip1 0
+		nvidia,trips = <&gpu_scaling_trip0 800 &gpu_scaling_trip1 0
 				&gpu_scaling_trip2 0 &gpu_scaling_trip3 0
 				&gpu_scaling_trip4 0 &gpu_scaling_trip5 0>;
 	};

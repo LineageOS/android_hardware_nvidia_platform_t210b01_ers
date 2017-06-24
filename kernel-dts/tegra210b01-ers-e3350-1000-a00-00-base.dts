@@ -34,10 +34,6 @@
 		status = "disabled";
 	};
 
-	gpu-scaling-cdev {
-		status = "disabled";
-	};
-
 	gpu-vmax-cdev {
 		status = "disabled";
 	};
