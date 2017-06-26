@@ -818,4 +818,7 @@
 
 	};
 
+	nvdumper {
+		status = "okay";
+	};
 };
