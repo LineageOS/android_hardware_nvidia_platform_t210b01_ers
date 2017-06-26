@@ -25,26 +25,50 @@
 	host1x {
 		/* tegradc.0 */
 		dc@54200000 {
-			avdd_dsi_csi-supply = <&max77620_gpio7>;
-			avdd_lcd-supply = <&vdd_3v3>;
-			dvdd_lcd-supply = <&en_vdd_lcd_1v8>;
-			vdd_lcd_bl_en-supply = <&lcd_bl_en>;
-			vdd_lcd_bl-supply = <&battery_reg>;
-			vdd_ds_1v8-supply = <&battery_reg>;
-		};
-		/* tegradc.1 */
-		dc@54240000 {
+			/* hdmi */
 			avdd_hdmi-supply = <&max77620_ldo8>;
 			avdd_hdmi_pll-supply = <&max77620_sd3>;
 			vdd_hdmi_5v0-supply = <&vdd_hdmi>;
-			vdd_lcd_bl-supply = <&battery_reg>;
-			vdd_ds_1v8-supply = <&battery_reg>;
+
+			/* dsi */
+			avdd_dsi_csi-supply = <&max77620_gpio7>;
 
 			/* dp */
 			vdd-dp-pwr-supply = <&vdd_3v3>;
 			avdd-dp-pll-supply = <&max77620_sd3>;
 			vdd-edp-sec-mode-supply = <&vdd_sys_boost>;
 			vdd-dp-pad-supply = <&max77620_ldo8>;
+
+			/* panel */
+			avdd_lcd-supply = <&vdd_3v3>;
+			dvdd_lcd-supply = <&en_vdd_lcd_1v8>;
+			vdd_lcd_bl_en-supply = <&lcd_bl_en>;
+			vdd_lcd_bl-supply = <&battery_reg>;
+			vdd_ds_1v8-supply = <&battery_reg>;
+		};
+
+		/* tegradc.1 */
+		dc@54240000 {
+			/* hdmi */
+			avdd_hdmi-supply = <&max77620_ldo8>;
+			avdd_hdmi_pll-supply = <&max77620_sd3>;
+			vdd_hdmi_5v0-supply = <&vdd_hdmi>;
+
+			/* dsi */
+			avdd_dsi_csi-supply = <&max77620_gpio7>;
+
+			/* dp */
+			vdd-dp-pwr-supply = <&vdd_3v3>;
+			avdd-dp-pll-supply = <&max77620_sd3>;
+			vdd-edp-sec-mode-supply = <&vdd_sys_boost>;
+			vdd-dp-pad-supply = <&max77620_ldo8>;
+
+			/* panel */
+			avdd_lcd-supply = <&vdd_3v3>;
+			dvdd_lcd-supply = <&en_vdd_lcd_1v8>;
+			vdd_lcd_bl_en-supply = <&lcd_bl_en>;
+			vdd_lcd_bl-supply = <&battery_reg>;
+			vdd_ds_1v8-supply = <&battery_reg>;
 		};
 		vi {
 			avdd_dsi_csi-supply = <&max77620_gpio7>;
@@ -239,15 +263,15 @@
 	};
 
 	pinctrl@7009f000 {
-		vbus-0-supply = <&vdd_usb23_5v0>;
+		vbus-0-supply = <&vdd_usb23_5v0>; /* usb23_5v0 : VBUS_EN1 */
 		/* Use the below regulators when OC support is enabled
 		vbus-1-supply = <&vdd_usb_oc_5v0>;
 		vbus-2-supply = <&vdd_usb_oc_5v0>;
 		vbus-3-supply = <&vdd_usb_oc_5v0>;
 		*/
-		vbus-1-supply = <&vdd_usb1_5v0>;
-		vbus-2-supply = <&battery_reg>;
-		vbus-3-supply = <&battery_reg>;
+		vbus-1-supply = <&vdd_usb1_5v0>; /* usb1_5v0 : VBUS_EN0 */
+		vbus-2-supply = <&vdd_usb1_5v0>;
+		vbus-3-supply = <&vdd_usb1_5v0>;
 		vddio-hsic-supply = <&max77620_ldo0>;
 		avdd_pll_uerefe-supply = <&max77620_ldo7>;
 		hvdd_pex_pll_e-supply = <&max77620_sd3>;

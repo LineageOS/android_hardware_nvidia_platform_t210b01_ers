@@ -154,40 +154,6 @@
 						vif-supply = <&en_vdd_cam>;
 					};
 				};
-				i2c@4 {
-					reg = <4>;
-					i2c-mux,deselect-on-exit;
-					#address-cells = <1>;
-					#size-cells = <0>;
-					ov5693_e@36 {
-						clocks = <&tegra_car TEGRA210_CLK_CLK_OUT_3>;
-						clock-names = "clk_out_3";
-						clock-frequency = <24000000>;
-
-						mclk = "clk_out_3";
-						pwdn-gpios = <&tca6408_21 4 GPIO_ACTIVE_HIGH>;
-						reset-gpios = <&tca6408_21 5 GPIO_ACTIVE_HIGH>;
-						vana-supply = <&max77620_ldo3>;
-						vif-supply = <&en_vdd_cam>;
-					};
-				};
-				i2c@5 {
-					reg = <5>;
-					i2c-mux,deselect-on-exit;
-					#address-cells = <1>;
-					#size-cells = <0>;
-					ov5693_f@36 {
-						clocks = <&tegra_car TEGRA210_CLK_CLK_OUT_3>;
-						clock-names = "clk_out_3";
-						clock-frequency = <24000000>;
-
-						mclk = "clk_out_3";
-						pwdn-gpios = <&tca6408_21 6 GPIO_ACTIVE_HIGH>;
-						reset-gpios = <&tca6408_21 7 GPIO_ACTIVE_HIGH>;
-						vana-supply = <&max77620_ldo3>;
-						vif-supply = <&en_vdd_cam>;
-					};
-				};
 			};
 		};
 	};

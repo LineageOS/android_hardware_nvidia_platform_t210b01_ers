@@ -74,6 +74,12 @@
 				gpios = <9 0 10 0>;
 				line-name = "pcie-mux-output-high";
 			};
+			spi-lb-output-high {
+				gpio-hog;
+				output-high;
+				gpios = <0 0>;
+				line-name = "spi-lb-output-high";
+			};
 		};
 		pca9535_3: pca9535@23 {
 			compatible = "nxp,pca9535";

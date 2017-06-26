@@ -20,7 +20,7 @@
 / {
 	host1x {
 
-		dc@54200000 {
+		dc@54240000 {
 			nvidia,dc-or-node = "/host1x/sor1";
 			nvidia,dc-connector = <&sor1>;
 		};
