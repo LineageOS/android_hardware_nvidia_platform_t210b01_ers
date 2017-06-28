@@ -373,7 +373,7 @@
 	};
 
 	host1x {
-		dsi {
+		dc@54200000 {
 			pinctrl-names = "pad_ab_default", "pad_ab_idle",
 				"pad_cd_default", "pad_cd_idle";
 			pinctrl-0 = <&dsi_ab_pad_default>;
