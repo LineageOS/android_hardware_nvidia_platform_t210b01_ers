@@ -25,4 +25,8 @@
 / {
 	nvidia,dtsfilename = __FILE__;
 	nvidia,dtbbuildtime = __DATE__, __TIME__;
+
+	pwm@70110000 {
+		pwm-enable-gpio = <&pca9535_2 0 0>;
+	};
 };
