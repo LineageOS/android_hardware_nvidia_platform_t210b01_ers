@@ -15,7 +15,7 @@
 / {
 	plugin-manager {
 		fragement@0 {
-			ids = "2176-1001-000", "2176-0310-100", "2176-0211-100";
+			ids = "2176-1001-000", "2176-0310-100", "2176-0211-*";
 			override@0 {
 				target = <&gpu_ovr_reg>;
 				_overlay_ {
@@ -86,7 +86,7 @@
 		};
 
 		fragement@1 {
-			ids = "2176-0211-100";
+			ids = "2176-0211-*";
 			override@0 {
 				target = <&max77812>;
 				_overlay_ {
