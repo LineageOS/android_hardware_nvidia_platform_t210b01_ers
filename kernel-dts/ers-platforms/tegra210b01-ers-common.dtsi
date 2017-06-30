@@ -532,6 +532,12 @@
 		Tdiode_tegra {
 			status = "okay";
 			trips {
+				gpu_throttle {
+					temperature = <86500>;
+					hysteresis = <0>;
+					type = "passive";
+					writable;
+				};
 				gpu_scaling_trip0: gpu-scaling-trip0 {
 					temperature = <(TEGRA210B01_GPU_DVFS_THERMAL_MIN)>;
 					hysteresis = <0>; /* millicelsius */
@@ -628,6 +634,13 @@
 					trip = <&dfll_floor_trip0>;
 					cooling-device = <&dfll_floor 1 1>;
 				};
+				map0 {
+					trip = <&{/thermal-zones/Tdiode_tegra/trips/gpu_throttle}>;
+					cdev-type = "gpu-balanced";
+					cooling-device = <&{/bthrot_cdev/gpu_balanced}
+						THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+				};
+
 			};
 		};
 		AO-therm {
