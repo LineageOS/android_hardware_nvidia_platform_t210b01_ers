@@ -11,7 +11,7 @@
  * more details.
  */
 
-#include "tegra210b01-ers-e3350-1000-a00-00-base.dts"
+#include "tegra210b01-ers-e3350-1099-a00-00-base.dts"
 / {
 	host1x {
 		/* tegradc.0 */
