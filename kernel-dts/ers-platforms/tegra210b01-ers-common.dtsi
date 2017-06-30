@@ -633,6 +633,40 @@
 		AO-therm {
 			status = "okay";
 		};
+		PLL-therm {
+			status = "okay";
+			polling-delay-passive = <500>;
+			thermal-zone-params {
+				governor-name = "step_wise";
+			};
+			trips {
+				cpu_heavy {
+					temperature = <93000>;
+					hysteresis = <0>;
+					type = "hot";
+					writable;
+				};
+				cpu_throttle {
+					temperature = <88000>;
+					hysteresis = <0>;
+					type = "passive";
+					writable;
+				};
+			};
+			cooling-maps {
+				map0 {
+					trip = <&{/thermal-zones/PLL-therm/trips/cpu_heavy}>;
+					cdev-type = "tegra-heavy";
+					cooling-device = <&throttle_heavy 1 1>;
+				};
+				map1 {
+					trip = <&{/thermal-zones/PLL-therm/trips/cpu_throttle}>;
+					cdev-type = "cpu-balanced";
+					cooling-device = <&{/bthrot_cdev/cpu_balanced}
+						THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+				};
+			};
+		};
 	};
 
 	adma@702e2000  {
