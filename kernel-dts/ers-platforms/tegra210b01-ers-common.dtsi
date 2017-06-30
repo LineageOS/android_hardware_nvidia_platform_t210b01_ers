@@ -193,8 +193,6 @@
 	};
 
 	watchdog@60005100 {
-		nvidia,enable-on-init;
-		timeout-sec = <120>;
 		status = "okay";
 	};
 
