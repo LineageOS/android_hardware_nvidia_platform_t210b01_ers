@@ -55,4 +55,8 @@
                 nvidia,x4-is-ddr;
                 status = "okay";
         };
+
+	pcie-controller@1003000 {
+		/delete-property/ nvidia,wake-gpio;
+	};
 };
