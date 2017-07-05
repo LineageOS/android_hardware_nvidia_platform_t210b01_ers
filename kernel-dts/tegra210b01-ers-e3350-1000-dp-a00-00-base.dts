@@ -25,7 +25,6 @@
 
 		sor1 {
 			status = "okay";
-			nvidia,pmc-wakeup = <&tegra_pmc PMC_WAKE_TYPE_EVENT 53 PMC_TRIGGER_TYPE_LOW>;
 			nvidia,active-panel = <&sor1_dp_display>;
 			dp-display {
 				status = "okay";
