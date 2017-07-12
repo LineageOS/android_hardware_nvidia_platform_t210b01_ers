@@ -26,6 +26,11 @@
 			outp-supply = <&vpp_lcd>;
 			outn-supply = <&vmm_lcd>;
 			nvidia,cmu-enable = <0>;
+			pinctrl-names = "";
+			pinctrl-0 = <0>;
+			pinctrl-1 = <0>;
+			pinctrl-2 = <0>;
+			pinctrl-3 = <0>;
 		};
 		/* tegradc.1 */
 		dc@54240000 {
@@ -38,6 +43,12 @@
 			nvidia,fb-flags = <TEGRA_FB_FLIP_ON_PROBE>;
 			nvidia,dc-or-node = "/host1x/dsi";
 			nvidia,dc-connector = <&dsi>;
+			pinctrl-names = "pad_ab_default", "pad_ab_idle",
+				"pad_cd_default", "pad_cd_idle";
+			pinctrl-0 = <&dsi_ab_pad_default>;
+			pinctrl-1 = <&dsi_ab_pad_idle>;
+			pinctrl-2 = <&dsi_cd_pad_default>;
+			pinctrl-3 = <&dsi_cd_pad_idle>;
 		};
 	};
 };
