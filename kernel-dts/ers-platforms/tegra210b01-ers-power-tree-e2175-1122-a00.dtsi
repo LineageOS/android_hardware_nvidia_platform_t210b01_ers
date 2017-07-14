@@ -167,6 +167,8 @@
 				};
 
 				ldo8 {
+					maxim,active-fps-source = <MAX77620_FPS_SRC_0>;
+					maxim,suspend-fps-source = <MAX77620_FPS_SRC_NONE>;
 					regulator-enable-ramp-delay = <48>;
 					regulator-disable-ramp-delay = <6160>;
 					maxim,ramp-rate-setting = <100000>;
