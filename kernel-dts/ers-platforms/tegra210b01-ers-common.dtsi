@@ -126,7 +126,7 @@
 		uhs-mask = <0x8>;
 		cd-gpios = <&gpio TEGRA_GPIO(Z, 1) 0>;
 		wp-gpios = <&gpio TEGRA_GPIO(Z, 4) 0>;
-		default-drv-type = <1>;
+		default-drv-type = <0>;
 		power-off-rail;
 		nvidia,update-pinctrl-settings;
 		nvidia,skip-e-schmitt-disable-state;
