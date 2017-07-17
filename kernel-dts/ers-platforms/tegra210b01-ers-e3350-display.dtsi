@@ -406,17 +406,17 @@
 
 		gpio_i2c_0_21: gpio@21 {
 			compatible = "ti,tca6408";
-			status = "okay";
+			status = "disabled";
 			reg = <0x21>;
 			gpio-controller;
 			#gpio-cells = <2>;
 			vcc-supply = <&battery_reg>;
 		};
 
-		tps65132@3e {
+		display_bias_regulator: tps65132@3e {
 			reg = <0x3e>;
 			compatible = "ti,tps65132";
-			status = "okay";
+			status = "disabled";
 			vpp_lcd: outp {
 				regulator-name = "outp";
 				regulator-min-microvolt = <4000000>;

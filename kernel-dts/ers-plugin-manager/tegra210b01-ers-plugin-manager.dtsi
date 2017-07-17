@@ -108,5 +108,21 @@
 				};
 			};
 		};
+
+		fragement@6 {
+			ids = "3320-1000-200";
+			override@0 {
+				target = <&gpio_i2c_0_21>;
+				_overlay_ {
+					status = "okay";
+				};
+			};
+			override@1 {
+				target = <&display_bias_regulator>;
+				_overlay_ {
+					status = "okay";
+				};
+			};
+		};
 	};
 };
