@@ -110,7 +110,7 @@
 		};
 
 		fragement@6 {
-			ids = "3320-1000-200";
+			ids = "3320-*";
 			override@0 {
 				target = <&gpio_i2c_0_21>;
 				_overlay_ {
