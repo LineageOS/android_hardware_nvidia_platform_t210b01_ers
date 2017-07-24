@@ -34,6 +34,7 @@
 					regulator-init-mode = <REGULATOR_MODE_NORMAL>;
 					regulator-ramp-delay = <20000>;
 					regulator-enable-ramp-delay = <5000>;
+					maxim,peak-current-limit-ua = <7200000>;
 				};
 
 				m2vout {
@@ -43,6 +44,7 @@
 					regulator-init-mode = <REGULATOR_MODE_NORMAL>;
 					regulator-ramp-delay = <20000>;
 					regulator-enable-ramp-delay = <5000>;
+					maxim,peak-current-limit-ua = <7200000>;
 				};
 
 				m3_max_reg: m3vout {
@@ -52,6 +54,7 @@
 					regulator-init-mode = <REGULATOR_MODE_NORMAL>;
 					regulator-ramp-delay = <20000>;
 					regulator-enable-ramp-delay = <5000>;
+					maxim,peak-current-limit-ua = <7200000>;
 				};
 
 				m4_max_reg: m4vout {
@@ -63,6 +66,7 @@
 					regulator-init-mode = <REGULATOR_MODE_NORMAL>;
 					regulator-ramp-delay = <20000>;
 					regulator-enable-ramp-delay = <5000>;
+					maxim,peak-current-limit-ua = <7200000>;
 				};
 			};
 		};
