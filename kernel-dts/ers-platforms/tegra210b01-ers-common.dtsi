@@ -539,7 +539,15 @@
 		};
 		Tdiode_tegra {
 			status = "okay";
+			polling-delay-passive = <500>;
 			trips {
+				gpu_shutdown {
+					temperature = <93500>;
+					hysteresis = <0>;
+					type = "critical";
+					writable;
+				};
+
 				gpu_throttle {
 					temperature = <86500>;
 					hysteresis = <0>;
@@ -671,6 +679,12 @@
 					temperature = <88000>;
 					hysteresis = <0>;
 					type = "passive";
+					writable;
+				};
+				cpu_critical {
+					temperature = <95000>;
+					hysteresis = <0>;
+					type = "critical";
 					writable;
 				};
 			};
