@@ -68,12 +68,6 @@
 			reg = <0x22>;
 			vcc-supply = <&max77620_sd3>;
 			status = "okay";
-			pcie-mux-output-high {
-				gpio-hog;
-				output-high;
-				gpios = <9 0 10 0>;
-				line-name = "pcie-mux-output-high";
-			};
 		};
 		pca9535_3: pca9535@23 {
 			compatible = "nxp,pca9535";

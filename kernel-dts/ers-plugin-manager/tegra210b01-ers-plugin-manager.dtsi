@@ -193,5 +193,68 @@
                         };
                 };
 
+		fragement@8 {
+			odm-data = "disable-usb3-host";
+			override@0 {
+				target = <&tegra_padctl_uphy_pinmux_default>;
+				_overlay_ {
+					usb3-std-A-J8110 {
+						status = "disabled";
+					};
+					usb3-std-A-J8120 {
+						status = "disabled";
+					};
+				};
+			};
+			override@1 {
+				target = <&{/xusb@70090000}>;
+				_overlay_ {
+					phy-names = "utmi-0", "utmi-1", "utmi-2", "utmi-3",
+						    "usb3-0";
+				};
+			};
+		};
+
+		fragment@9 {
+			odm-data = "enable-pcie-x4";
+			override@0 {
+				target = <&tegra_padctl_uphy_pinmux_default>;
+				_overlay_ {
+					pcie-0 {
+						nvidia,lanes = "uphy-lane-3", "uphy-lane-2",
+							       "uphy-lane-1", "uphy-lane-4";
+					};
+				};
+			};
+			override@1 {
+				target = <&pca9535_5>;
+				_overlay_ {
+					pcie-mux-output-low {
+						gpios = <5 0 6 0 7 0>;
+						status = "okay";
+					};
+					pcie-mux-output-high {
+						status = "disabled";
+					};
+				};
+			};
+		};
+
+		fragment@10 {
+			odm-data = "enable-pcie-m2";
+			override@0 {
+				target = <&pca9535_5>;
+				_overlay_ {
+					pcie-mux-output-low {
+						gpios = <5 0 6 0>;
+						status = "okay";
+					};
+					pcie-mux-output-high {
+						gpios = <7 0>;
+						status = "okay";
+					};
+				};
+			};
+		};
 	};
 };
