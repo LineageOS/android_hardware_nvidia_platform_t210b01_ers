@@ -25,7 +25,6 @@
 			reg = <0x31>;
 			status = "disabled";
 			maxim,ramp-up-slew-rate = <5000>;
-			maxim,ramp-down-slew-rate = <20000>;
 
 			regulators {
 				gpu_max_reg: m1vout {
