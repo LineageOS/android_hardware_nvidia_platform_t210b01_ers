@@ -105,6 +105,7 @@
 				target = <&m4_max_reg>;
 				_overlay_ {
 					regulator-name = "vdd-lp4lv";
+					maxim,enable-forced-pwm-mode;
 				};
 			};
 
