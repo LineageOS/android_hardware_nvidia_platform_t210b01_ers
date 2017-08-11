@@ -733,6 +733,14 @@
 		};
 	};
 
+	pinmux@700008d4 {
+		prod-settings {
+			i2s4a_uart2_prod {
+				status = "okay";
+			};
+		};
+	};
+
 	sound_card: sound {
 		compatible = "nvidia,tegra-audio-t210ref-mobile-rt565x";
 		nvidia,model = "tegra-snd-t210ref-mobile-rt565x";
