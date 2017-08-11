@@ -31,7 +31,7 @@
 				compatible = "dp, display";
 				nvidia,hpd-gpio = <&gpio TEGRA_GPIO(CC, 1) 1>; /* PN7 */
 				nvidia,is_ext_dp_panel = <1>;
-				nvidia,lanes = <2>;
+				nvidia,lanes = <4>;
 
 				disp-default-out {
 					nvidia,out-type = <TEGRA_DC_OUT_DP>;
