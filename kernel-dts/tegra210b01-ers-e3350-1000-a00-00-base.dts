@@ -26,18 +26,6 @@
 	nvidia,dtsfilename = __FILE__;
 	nvidia,dtbbuildtime = __DATE__, __TIME__;
 
-	core_dvfs_cap: core_dvfs_cdev_cap {
-		status = "disabled";
-	};
-
-	dfll-cdev-cap {
-		status = "disabled";
-	};
-
-	gpu-vmax-cdev {
-		status = "disabled";
-	};
-
 	i2c@7000c400 {
 		rt5659: rt5659.0-001a@1a {
 			compatible = "realtek,rt5659";

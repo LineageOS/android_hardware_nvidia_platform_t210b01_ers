@@ -470,7 +470,12 @@
 					<408000000>;
 	};
 
+	core_dvfs_cdev_cap {
+		status = "disabled";
+	};
+
 	dfll_cap: dfll-cdev-cap {
+		status = "disabled";
 		compatible = "nvidia,tegra-dfll-cdev-action";
 		act-dev = <&tegra_clk_dfll>;
 		cdev-type = "DFLL-cap";
@@ -497,13 +502,14 @@
 	};
 
 	gpu_vmax_cdev: gpu-vmax-cdev {
+		status = "disabled";
 		cooling-min-state = <0>;
 		cooling-max-state = <1>;
 		#cooling-cells = <2>;
 		compatible = "nvidia,tegra210-rail-vmax-cdev";
 		cdev-type = "GPU-cap";
 		nvidia,constraint-ucm2;
-		nvidia,trips = <&gpu_vmax_trip1 1132 1090>;
+		nvidia,trips = <&gpu_vmax_trip1 1120 1120>;
 		clocks = <&tegra_car TEGRA210_CLK_CAP_VGPU_GBUS>;
 		clock-names = "cap-clk";
 	};
