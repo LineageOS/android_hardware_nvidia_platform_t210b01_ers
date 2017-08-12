@@ -121,14 +121,14 @@
 					regulator-enable-ramp-delay = <96>;
 					regulator-disable-ramp-delay = <3160>;
 					maxim,ramp-rate-setting = <100000>;
-					regulator-ramp-delay = <9500>;
+					regulator-ramp-delay = <8500>;
 				};
 
 				ldo2 {
 					regulator-enable-ramp-delay = <124>;
 					regulator-disable-ramp-delay = <5160>;
 					maxim,ramp-rate-setting = <100000>;
-					regulator-ramp-delay = <12500>;
+					regulator-ramp-delay = <3500>;
 				};
 
 				ldo3 {
@@ -163,7 +163,7 @@
 					regulator-enable-ramp-delay = <112>;
 					regulator-disable-ramp-delay = <11720>;
 					maxim,ramp-rate-setting = <100000>;
-					regulator-ramp-delay = <9900>;
+					regulator-ramp-delay = <2000>;
 				};
 
 				ldo8 {
@@ -172,7 +172,7 @@
 					regulator-enable-ramp-delay = <48>;
 					regulator-disable-ramp-delay = <6160>;
 					maxim,ramp-rate-setting = <100000>;
-					regulator-ramp-delay = <20000>;
+					regulator-ramp-delay = <2500>;
 				};
 			};
 		};
