@@ -45,7 +45,6 @@
 							   TEGRA_DC_OUT_PIN_PIXEL_CLOCK TEGRA_DC_OUT_PIN_POL_LOW
 							   TEGRA_DC_OUT_PIN_DATA_ENABLE TEGRA_DC_OUT_PIN_POL_HIGH>;
 					nvidia,out-parent-clk = "pll_d2_out0";
-					nvidia,out-max-pixclk = <3333>; /* KHZ2PICOS(300000) */
 				};
 				dp-lt-settings {
 					lt-setting@0 {
