@@ -33,4 +33,27 @@
 	pcie-controller@1003000 {
 		/delete-property/ nvidia,wake-gpio;
 	};
+
+	pinmux@700008d4 {
+		prod-settings {
+			uart2_prod {
+				status = "okay";
+				char {
+					prod = <0 0x258 0x1F1F000 0x00F0F000
+						0 0x25c 0x1F1F000 0x00F0F000
+						0 0x260 0x1F1F000 0x00F0F000
+						0 0x264 0x1F1F000 0x00F0F000>;
+				};
+			};
+			uart3_prod {
+				status = "okay";
+				char {
+					prod = <0 0x268 0x1F1F000 0x00F0F000
+						0 0x26c 0x1F1F000 0x00F0F000
+						0 0x270 0x1F1F000 0x00F0F000
+						0 0x274 0x1F1F000 0x00F0F000>;
+				};
+			};
+		};
+	};
 };
