@@ -475,7 +475,6 @@
 	};
 
 	dfll_cap: dfll-cdev-cap {
-		status = "disabled";
 		compatible = "nvidia,tegra-dfll-cdev-action";
 		act-dev = <&tegra_clk_dfll>;
 		cdev-type = "DFLL-cap";
