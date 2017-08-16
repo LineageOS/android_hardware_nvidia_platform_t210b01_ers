@@ -471,7 +471,11 @@
 	};
 
 	core_dvfs_cdev_cap {
-		status = "disabled";
+		clocks = <&tegra_car TEGRA210_CLK_CAP_VCORE_C2BUS>,
+			 <&tegra_car TEGRA210_CLK_CAP_VCORE_C3BUS>,
+			 <&tegra_car TEGRA210_CLK_CAP_VCORE_CBUS>,
+			 <&tegra_car TEGRA210_CLK_CAP_VCORE_APE>;
+		clock-names = "c2bus_cap", "c3bus_cap", "cbus_cap", "ape_cap";
 	};
 
 	dfll_cap: dfll-cdev-cap {
