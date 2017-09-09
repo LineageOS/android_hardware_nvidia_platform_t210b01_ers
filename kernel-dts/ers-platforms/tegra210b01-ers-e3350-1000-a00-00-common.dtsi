@@ -68,6 +68,12 @@
 			reg = <0x22>;
 			vcc-supply = <&max77620_sd3>;
 			status = "okay";
+			pcie-atx-ctrl-high {
+				gpio-hog;
+				output-high;
+				gpios = <11 0>;
+				line-name = "pcie-atx-ctrl-high";
+			};
 		};
 		pca9535_3: pca9535@23 {
 			compatible = "nxp,pca9535";
