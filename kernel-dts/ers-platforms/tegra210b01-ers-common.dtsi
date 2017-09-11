@@ -185,18 +185,46 @@
 
 	spi@7000d400 {
 		status = "disabled";
+		prod-settings {
+			#prod-cells = <3>;
+			prod {
+				prod = <0x04 0x00000fff 0x8>;
+				prod = <0x08 0x0000ffff 0x1010>;
+			};
+		};
 	};
 
 	spi@7000d600 {
 		status = "disabled";
+		prod-settings {
+			#prod-cells = <3>;
+			prod {
+				prod = <0x04 0x00000fff 0x1f>;
+				prod = <0x08 0x0000ffff 0x1010>;
+			};
+		};
 	};
 
 	spi@7000d800 {
 		status = "disabled";
+		prod-settings {
+			#prod-cells = <3>;
+			prod {
+				prod = <0x04 0x00000fff 0xf>;
+				prod = <0x08 0x000000ff 0x10>;
+			};
+		};
 	};
 
 	spi@7000da00 {
 		status = "okay";
+		prod-settings {
+			#prod-cells = <3>;
+			prod {
+				prod = <0x04 0x00000fff 0x1b>;
+				prod = <0x08 0x000000ff 0x10>;
+			};
+		};
 	};
 
 	watchdog@60005100 {
