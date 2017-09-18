@@ -44,6 +44,7 @@
 		wlan-rst-gpio = <&gpio TEGRA_GPIO(H, 1) 0>;
 		fw_path = "/vendor/firmware/bcm4354/fw_bcmdhd.bin";
 		nv_path = "/vendor/firmware/nvram_4354.txt";
+		sdhci-host = <&sdhci1>;
 		status = "okay";
 	};
 
