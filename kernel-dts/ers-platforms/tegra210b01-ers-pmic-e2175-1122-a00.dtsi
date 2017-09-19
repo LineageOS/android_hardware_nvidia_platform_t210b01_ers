@@ -283,7 +283,8 @@
 			regulator-n-voltages = <124>;
 			regulator-enable-ramp-delay = <2000>;
 			enable-gpio = <&max77620 6 0>;
-			regulator-settling-time-us = <80>;
+			regulator-settling-time-us;
+			regulator-ramp-delay = <80>;
 		};
 	};
 
