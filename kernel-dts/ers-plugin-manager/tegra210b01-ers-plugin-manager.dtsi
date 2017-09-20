@@ -89,6 +89,8 @@
 			ids = "2176-0211-*";
 			override@0 {
 				target = <&max77812>;
+				#address-cells = <1>;
+				#size-cells = <0>;
 				_overlay_ {
 					reg = <0x33>;
 				};
