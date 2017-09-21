@@ -338,6 +338,7 @@
 			<&tegra_padctl_uphy TEGRA_PADCTL_UPHY_USB3_P(0)>;
 		phy-names = "usb2", "usb3";
 		charger-detector = <&usb_cd>;
+		nvidia,boost_cpu_freq = <1200>;
 	};
 
 	xotg {
