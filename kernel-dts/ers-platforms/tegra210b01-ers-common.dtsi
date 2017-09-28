@@ -598,6 +598,11 @@
 					hysteresis = <1000>; /* millicelsius */
 					type = "active";
 				};
+				dfll_floor_trip1: dfll-floor-trip1 {
+					temperature = <TEGRA210B01_DFLL_THERMAL_FLOOR_1>;
+					hysteresis = <1000>; /* millicelsius */
+					type = "active";
+				};
 			};
 
 			cooling-maps {
@@ -639,6 +644,10 @@
 				dfll-floor-map0 {
 					trip = <&dfll_floor_trip0>;
 					cooling-device = <&dfll_floor 1 1>;
+				};
+				dfll-floor-map1 {
+					trip = <&dfll_floor_trip1>;
+					cooling-device = <&dfll_floor 2 2>;
 				};
 				map0 {
 					trip = <&{/thermal-zones/Tdiode_tegra/trips/gpu_throttle}>;
