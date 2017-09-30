@@ -80,7 +80,7 @@
 			override@9 {
 				target = <&{/dvfs}>;
 				_overlay_ {
-					nvidia,gpu-max-freq-khz = <844800>;
+					nvidia,gpu-max-freq-khz = <1228800>;
 				};
 			};
 		};
@@ -120,7 +120,7 @@
 			override@4 {
 				target = <&{/dvfs}>;
 				_overlay_ {
-					nvidia,gpu-max-freq-khz = <614400>;
+					nvidia,gpu-max-freq-khz = <844800>;
 				};
 			};
 		};
