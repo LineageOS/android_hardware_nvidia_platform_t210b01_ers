@@ -61,6 +61,7 @@
 					nvidia,i2c-fs-rate = <400000>;
 					nvidia,sample-rate = <12500>;
 					nvidia,dfll-max-freq-khz = <1683000>;
+					nvidia,one-shot-settle-time = <500>;
 				};
 			};
 

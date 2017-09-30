@@ -450,6 +450,7 @@
 		nvidia,cg = <2>;
 		nvidia,idle-override;
 		nvidia,one-shot-calibrate;
+		nvidia,one-shot-settle-time = <100>;
 	};
 
 	cpus {
