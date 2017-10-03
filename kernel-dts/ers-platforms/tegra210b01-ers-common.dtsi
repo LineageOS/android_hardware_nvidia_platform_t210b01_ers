@@ -259,13 +259,23 @@
 		compatible = "nvidia,tegra21xb01-padctl-uphy";
 		status = "okay";
 		pinctrl-0 = <&tegra_padctl_uphy_pinmux_default>;
-		pinctrl-names = "default";
+		pinctrl-1 = <&vbus_en0_sfio_tristate_state>;
+		pinctrl-2 = <&vbus_en1_sfio_tristate_state>;
+		pinctrl-3 = <&vbus_en0_sfio_passthrough_state>;
+		pinctrl-4 = <&vbus_en1_sfio_passthrough_state>;
+		pinctrl-5 = <&vbus_en0_default_state>;
+		pinctrl-6 = <&vbus_en1_default_state>;
+		pinctrl-names = "default",
+			"vbus_en0_sfio_tristate", "vbus_en1_sfio_tristate",
+			"vbus_en0_sfio_passthrough", "vbus_en1_sfio_passthrough",
+			"vbus_en0_default", "vbus_en1_default";
 		tegra_padctl_uphy_pinmux_default: pinmux {
 			usb2-micro-AB {
 				nvidia,lanes = "otg-0";
 				nvidia,function = "xusb";
 				nvidia,port-cap =
 					<TEGRA_PADCTL_PORT_OTG_CAP>;
+				nvidia,oc-pin = <1>; /* VBUS_EN1 */
 			};
 			usb3-micro-AB {
 				nvidia,lanes = "uphy-lane-5";
@@ -280,6 +290,7 @@
 				nvidia,function = "xusb";
 				nvidia,port-cap =
 					<TEGRA_PADCTL_PORT_HOST_ONLY>;
+				nvidia,oc-pin = <0>; /* VBUS_EN0 */
 			};
 			usb3-std-A-J8110 {
 				nvidia,lanes = "uphy-lane-4";
@@ -295,6 +306,7 @@
 				nvidia,function = "xusb";
 				nvidia,port-cap =
 					<TEGRA_PADCTL_PORT_HOST_ONLY>;
+				nvidia,oc-pin = <0>; /* VBUS_EN0 */
 			};
 			usb3-std-A-J8120 {
 				nvidia,lanes = "uphy-lane-1";
@@ -309,6 +321,7 @@
 				nvidia,function = "xusb";
 				nvidia,port-cap =
 					<TEGRA_PADCTL_PORT_HOST_ONLY>;
+				nvidia,oc-pin = <0>; /* VBUS_EN0 */
 			};
 			pcie-0 {
 				nvidia,lanes = "uphy-lane-3", "uphy-lane-2";
@@ -413,6 +426,66 @@
 			dsi_cd_pad_disable {
 				nvidia,pins = "pad_dsi_cd";
 				nvidia,pad-power = <TEGRA_PIN_DISABLE>;
+			};
+		};
+		vbus_en0_sfio_tristate_state: vbus_en0_oc_tristate {
+			usb_vbus_en0_pcc4 {
+				nvidia,pins = "usb_vbus_en0_pcc4";
+				nvidia,pull = <TEGRA_PIN_PULL_NONE>;
+				nvidia,tristate = <TEGRA_PIN_ENABLE>;
+				nvidia,io-high-voltage = <TEGRA_PIN_ENABLE>;
+				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
+				nvidia,lpdr = <TEGRA_PIN_ENABLE>;
+			};
+		};
+		vbus_en1_sfio_tristate_state: vbus_en1_oc_tristate {
+			usb_vbus_en1_pcc5 {
+				nvidia,pins = "usb_vbus_en1_pcc5";
+				nvidia,pull = <TEGRA_PIN_PULL_NONE>;
+				nvidia,tristate = <TEGRA_PIN_ENABLE>;
+				nvidia,io-high-voltage = <TEGRA_PIN_ENABLE>;
+				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
+				nvidia,lpdr = <TEGRA_PIN_ENABLE>;
+			};
+		};
+		vbus_en0_sfio_passthrough_state: vbus_en0_oc_passthrough {
+			usb_vbus_en0_pcc4 {
+				nvidia,pins = "usb_vbus_en0_pcc4";
+				nvidia,pull = <TEGRA_PIN_PULL_NONE>;
+				nvidia,tristate = <TEGRA_PIN_DISABLE>;
+				nvidia,io-high-voltage = <TEGRA_PIN_ENABLE>;
+				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
+				nvidia,lpdr = <TEGRA_PIN_ENABLE>;
+			};
+		};
+		vbus_en1_sfio_passthrough_state: vbus_en1_oc_passthrough {
+			usb_vbus_en1_pcc5 {
+				nvidia,pins = "usb_vbus_en1_pcc5";
+				nvidia,pull = <TEGRA_PIN_PULL_NONE>;
+				nvidia,tristate = <TEGRA_PIN_DISABLE>;
+				nvidia,io-high-voltage = <TEGRA_PIN_ENABLE>;
+				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
+				nvidia,lpdr = <TEGRA_PIN_ENABLE>;
+			};
+		};
+		vbus_en0_default_state: vbus_en0_default {
+			usb_vbus_en0_pcc4 {
+				nvidia,pins = "usb_vbus_en0_pcc4";
+				nvidia,pull = <TEGRA_PIN_PULL_NONE>;
+				nvidia,tristate = <TEGRA_PIN_DISABLE>;
+				nvidia,io-high-voltage = <TEGRA_PIN_ENABLE>;
+				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
+				nvidia,lpdr = <TEGRA_PIN_ENABLE>;
+			};
+		};
+		vbus_en1_default_state: vbus_en1_default {
+			usb_vbus_en1_pcc5 {
+				nvidia,pins = "usb_vbus_en1_pcc5";
+				nvidia,pull = <TEGRA_PIN_PULL_NONE>;
+				nvidia,tristate = <TEGRA_PIN_DISABLE>;
+				nvidia,io-high-voltage = <TEGRA_PIN_ENABLE>;
+				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
+				nvidia,lpdr = <TEGRA_PIN_ENABLE>;
 			};
 		};
 	};
