@@ -284,6 +284,17 @@
 					>;
 				};
 			};
+			prod-settings {
+				#prod-cells = <3>;
+				dsi-padctrl-prod {
+					prod = <
+						0x00000148 0x000fffff 0x000fffff	/* PAD_CONTROL_4 */
+						0x0000014c 0x000fffff 0x000fffff	/* PAD_CONTROL_5 */
+						0x00000150 0x00003333 0x00001111	/* PAD_CONTROL_6 */
+						>;
+				};
+
+			};
 		};
 		dpaux {
 			status = "okay";
