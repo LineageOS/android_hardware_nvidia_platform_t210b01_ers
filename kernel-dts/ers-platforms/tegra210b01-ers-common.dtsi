@@ -113,6 +113,7 @@
 	sdhci@700b0400 { /* M.2 SDIO */
 		uhs-mask = <0x8>;
 		power-off-rail;
+		only-1-8-v;
 		nvidia,update-pinctrl-settings;
 		nvidia,skip-e-schmitt-disable-state;
 		default-drv-type = <1>;
