@@ -179,6 +179,9 @@
 			regulator-name = "vdd-usb1-5v0";
 			regulator-min-microvolt = <5000000>;
 			regulator-max-microvolt = <5000000>;
+#if TEGRA_XUSB_PADCONTROL_VERSION >= DT_VERSION_2
+			gpio = <&gpio TEGRA_GPIO(CC, 4) 0>;
+#endif
 			enable-active-high;
 			vin-supply = <&vdd_usb_5v0>;
 			regulator-disable-on-shutdown;
@@ -191,6 +194,9 @@
 			regulator-name = "vdd-usb23-5v0";
 			regulator-min-microvolt = <5000000>;
 			regulator-max-microvolt = <5000000>;
+#if TEGRA_XUSB_PADCONTROL_VERSION >= DT_VERSION_2
+			gpio = <&gpio TEGRA_GPIO(CC, 5) 0>;
+#endif
 			enable-active-high;
 			vin-supply = <&vdd_usb_5v0>;
 			regulator-disable-on-shutdown;
