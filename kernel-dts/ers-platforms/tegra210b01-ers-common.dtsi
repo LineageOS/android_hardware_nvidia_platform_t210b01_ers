@@ -760,14 +760,14 @@
 			polling-delay-passive = <500>;
 			trips {
 				gpu_shutdown {
-					temperature = <92500>;
+					temperature = <96500>;
 					hysteresis = <0>;
 					type = "critical";
 					writable;
 				};
 
 				gpu_throttle {
-					temperature = <86000>;
+					temperature = <90000>;
 					hysteresis = <0>;
 					type = "passive";
 					writable;
@@ -897,19 +897,19 @@
 			};
 			trips {
 				cpu_heavy {
-					temperature = <94500>;
+					temperature = <94000>;
 					hysteresis = <0>;
 					type = "hot";
 					writable;
 				};
 				cpu_throttle {
-					temperature = <90500>;
+					temperature = <90000>;
 					hysteresis = <0>;
 					type = "passive";
 					writable;
 				};
 				cpu_critical {
-					temperature = <96000>;
+					temperature = <95500>;
 					hysteresis = <0>;
 					type = "critical";
 					writable;
@@ -1148,7 +1148,7 @@
 		tegra_nct72: temp-sensor@4c {
 			offset = <(-44)>;
 			ext {
-				shutdown-limit = <93>;
+				shutdown-limit = <97>;
 			};
 		};
 
