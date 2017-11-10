@@ -212,15 +212,64 @@
 			override@1 {
 				target = <&{/xusb@70090000}>;
 				_overlay_ {
+#if TEGRA_XUSB_PADCONTROL_VERSION >= DT_VERSION_2
+					phys = <&{/xusb_padctl@7009f000/pads/usb2/lanes/usb2-0}>,
+						<&{/xusb_padctl@7009f000/pads/usb2/lanes/usb2-1}>,
+						<&{/xusb_padctl@7009f000/pads/usb2/lanes/usb2-2}>,
+						<&{/xusb_padctl@7009f000/pads/usb2/lanes/usb2-3}>,
+						<&{/xusb_padctl@7009f000/pads/pcie/lanes/pcie-5}>;
+					phy-names = "usb2-0", "usb2-1", "usb2-2", "usb2-3", "usb3-0";
+#else
 					phy-names = "utmi-0", "utmi-1", "utmi-2", "utmi-3",
 						    "usb3-0";
+#endif
 				};
 			};
+#if TEGRA_XUSB_PADCONTROL_VERSION >= DT_VERSION_2
+			override@2 {
+				target = <&{/xusb_padctl@7009f000}>;
+				_overlay_ {
+					pads {
+						pcie {
+							lanes {
+								pcie-1 {
+									nvidia,function = "pcie-x4";
+								};
+								pcie-4 {
+									nvidia,function = "pcie-x4";
+								};
+							};
+						};
+					};
+					ports {
+						usb3-1 {
+							status = "disabled";
+						};
+						usb3-2 {
+							status = "disabled";
+						};
+					};
+				};
+			};
+#endif
 		};
 
 		fragment@9 {
 			odm-data = "enable-pcie-x4";
 			override@0 {
+#if TEGRA_XUSB_PADCONTROL_VERSION >= DT_VERSION_2
+				target = <&{/pcie-controller@1003000}>;
+				_overlay_ {
+					pci@1,0 {
+						phys = <&{/xusb_padctl@7009f000/pads/pcie/lanes/pcie-3}>,
+							<&{/xusb_padctl@7009f000/pads/pcie/lanes/pcie-2}>,
+							<&{/xusb_padctl@7009f000/pads/pcie/lanes/pcie-1}>,
+							<&{/xusb_padctl@7009f000/pads/pcie/lanes/pcie-4}>;
+						phy-names = "pcie-0", "pcie-1", "pcie-2", "pcie-3";
+						nvidia,num-lanes = <4>;
+					};
+				};
+#else
 				target = <&tegra_padctl_uphy_pinmux_default>;
 				_overlay_ {
 					pcie-0 {
@@ -228,6 +277,7 @@
 							       "uphy-lane-1", "uphy-lane-4";
 					};
 				};
+#endif
 			};
 			override@1 {
 				target = <&pca9535_5>;
