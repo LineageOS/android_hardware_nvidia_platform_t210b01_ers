@@ -47,7 +47,12 @@
 	usb_cd: usb_cd@7009f000 {
 		compatible = "nvidia,tegra210-usb-cd";
 		reg = <0x0 0x7009f000 0x0 0x1000>;
+#if TEGRA_XUSB_PADCONTROL_VERSION >= DT_VERSION_2
+		phys = <&{/xusb_padctl@7009f000/pads/usb2/lanes/usb2-0}>;
+		nvidia,xusb-padctl = <&xusb_padctl>;
+#else
 		phys = <&tegra_padctl_uphy TEGRA_PADCTL_UPHY_UTMI_P(0)>;
+#endif
 		phy-names = "otg-phy";
 		#extcon-cells = <1>;
 		status = "okay";
