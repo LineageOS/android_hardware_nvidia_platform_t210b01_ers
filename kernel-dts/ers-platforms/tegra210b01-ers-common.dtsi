@@ -239,7 +239,7 @@
 		status = "disabled";
 	};
 
-	pcie-controller@1003000 {
+	pcie@1003000 {
 		compatible = "nvidia,tegra210b01-pcie";
 		nvidia,wake-gpio = <&gpio TEGRA_GPIO(A, 2) 0>;
 		status = "okay";
