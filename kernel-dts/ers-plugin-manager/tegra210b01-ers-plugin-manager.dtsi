@@ -56,8 +56,8 @@
 				_overlay_ {
 					vdd-cpu-supply = <&m4_max_reg>;
 					delete-target-property = "nvidia,pwm-to-pmic";
-					nvidia,align-offset-uv = <0>;
-					nvidia,align-step-uv = <5000>;
+					nvidia,pwm-min-microvolts = <0>;
+					nvidia,pwm-voltage-step-microvolts = <5000>;
 					nvidia,i2c-fs-rate = <400000>;
 					nvidia,sample-rate = <12500>;
 					nvidia,dfll-max-freq-khz = <1683000>;
