@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015-2019, NVIDIA CORPORATION.  All rights reserved.
+ * Copyright (c) 2015-2020, NVIDIA CORPORATION.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@
 #include <dt-bindings/platform/t210/t210.h>
 
 / {
-	host1x {
+	host1x@50000000 {
 		vi {
 			num-channels = <4>;
 			ports {
@@ -876,7 +876,7 @@
 				drivernode0 {
 					pcl_id = "v4l2_sensor";
 					devname = "ov5693 30-0036";
-					proc-device-tree = "/proc/device-tree/host1x/i2c@546c0000/tca9548@77/i2c@0/ov5693_a@36";
+					proc-device-tree = "/proc/device-tree/host1x@50000000/i2c@546c0000/tca9548@77/i2c@0/ov5693_a@36";
 				};
 				drivernode1 {
 					pcl_id = "v4l2_lens";
@@ -890,7 +890,7 @@
 				drivernode0 {
 					pcl_id = "v4l2_sensor";
 					devname = "ov5693 31-0036";
-					proc-device-tree = "/proc/device-tree/host1x/i2c@546c0000/tca9548@77/i2c@1/ov5693_b@36";
+					proc-device-tree = "/proc/device-tree/host1x@50000000/i2c@546c0000/tca9548@77/i2c@1/ov5693_b@36";
 				};
 				drivernode1 {
 					pcl_id = "v4l2_lens";
@@ -904,7 +904,7 @@
 				drivernode0 {
 					pcl_id = "v4l2_sensor";
 					devname = "ov5693 32-0036";
-					proc-device-tree = "/proc/device-tree/host1x/i2c@546c0000/tca9548@77/i2c@2/ov5693_c@36";
+					proc-device-tree = "/proc/device-tree/host1x@50000000/i2c@546c0000/tca9548@77/i2c@2/ov5693_c@36";
 				};
 				drivernode1 {
 					pcl_id = "v4l2_lens";
@@ -918,7 +918,7 @@
 				drivernode0 {
 					pcl_id = "v4l2_sensor";
 					devname = "ov5693 33-0036";
-					proc-device-tree = "/proc/device-tree/host1x/i2c@546c0000/tca9548@77/i2c@3/ov5693_d@36";
+					proc-device-tree = "/proc/device-tree/host1x@50000000/i2c@546c0000/tca9548@77/i2c@3/ov5693_d@36";
 				};
 				drivernode1 {
 					pcl_id = "v4l2_lens";
